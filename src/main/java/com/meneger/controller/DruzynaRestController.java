@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = DruzynaRestController.CONTROLLER_BASE)
-public class DruzynaRestController {
+public class DruzynaRestController extends AbstractRestController{
     public static final String CONTROLLER_BASE = "/druzyny";
 }
