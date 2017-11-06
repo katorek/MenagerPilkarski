@@ -92,9 +92,9 @@
                 <configuration>
                     <table>SCHEMA_VERSION</table>
                     <baselineOnMigrate>true</baselineOnMigrate>
-                    <url>jdbc:mysql://db4free.net:3306/db681657038</url>
-                    <user>dbo681657038</user>
-                    <password>jBratha123#</password>
+                    <url>jdbc:mysql://localhost:3306/meneger_pilkarski</url>
+                    <user>meneger</user>
+                    <password>mpilkarski123#</password>
                     <locations>
                         <location>filesystem:src/main/resources/db/migrations</location>
                     </locations>
