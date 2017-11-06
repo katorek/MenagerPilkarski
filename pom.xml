@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
     <url>https://github.com/katorek/MenegerPilkarski</url>
 
-    <nazwa>Meneger Pilkarski</nazwa>
+    <name>Meneger Pilkarski</name>
     <description>Glowny backend menegera pilkarskiego</description>
 
     <scm>
@@ -29,13 +29,13 @@
     <developers>
         <developer>
             <email>wojciech.jaronski@gmail.com</email>
-            <nazwa>Wojciech Jaroński</nazwa>
+            <name>Wojciech Jaroński</name>
             <url>https://github.com/katorek</url>
             <id>katorek</id>
         </developer>
         <developer>
             <!--<email></email>--> <!-- todo mozesz dopisac swojego maila-->
-            <nazwa>Robert Walicki</nazwa>
+            <name>Robert Walicki</name>
             <url>https://github.com/Arrowblast</url>
             <id>Arrowblast</id>
         </developer>
