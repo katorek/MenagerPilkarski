@@ -13,7 +13,7 @@ Football manager
 
 ## Setting up database
 1. create schema **meneger_pilkarski**
-2. create user **meneger** with passowrd: **mpilkarski123#** 
+2. create user **meneger** with password: **mpilkarski123#** 
 3. grant him all privs in schema **meneger_pilkarski**
 ********
 
