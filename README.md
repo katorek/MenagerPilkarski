@@ -13,4 +13,6 @@ Menager piłkarski
 
 2. cd $clone_dir
 
-3. mvn clean package && java -jar target/MenegerPilkarski-${version}.jar
+3. mvn flyway:migrate
+
+4. mvn clean package && java -jar target/MenegerPilkarski-${version}.jar

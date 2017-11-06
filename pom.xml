@@ -42,11 +42,15 @@
     </developers>
 
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>
@@ -71,6 +75,30 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.version}</version>
+            </plugin>
+            <!-- Flyway plugin -->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>4.0.3</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql-connector.version}</version>
+
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <table>SCHEMA_VERSION</table>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <url>jdbc:mysql://db4free.net:3306/db681657038</url>
+                    <user>dbo681657038</user>
+                    <password>jBratha123#</password>
+                    <locations>
+                        <location>filesystem:src/main/resources/db/migrations</location>
+                    </locations>
+                </configuration>
             </plugin>
         </plugins>
     </build>
