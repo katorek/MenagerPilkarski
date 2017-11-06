@@ -1,4 +1,4 @@
-package com.meneger.controller;
+package com.meneger.controllers;
 
 public class AbstractRestController {
 

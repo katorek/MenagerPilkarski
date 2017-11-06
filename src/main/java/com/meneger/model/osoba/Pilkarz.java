@@ -1,9 +1,13 @@
 package com.meneger.model.osoba;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "PILKARZE")
 public class Pilkarz {
     private static final int NAME_MAX_LENGTH = 30;
     private static final int PESEL_LENGTH = 11;
