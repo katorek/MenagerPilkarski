@@ -1,0 +1,19 @@
+spring:
+  data:
+    rest:
+      return-body-on-create: true
+  application:
+    name: MenegerPilkarski
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/meneger_pilkarski
+    username: meneger
+    password: mpilkarski123#
+    initialize: false
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+security:
+  ignored: /**
