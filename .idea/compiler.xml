@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MenagerPilkarski" />
+        <module name="MenegerPilkarski" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="MenagerPilkarski" target="1.5" />
+      <module name="MenegerPilkarski" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

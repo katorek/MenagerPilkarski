@@ -7,6 +7,72 @@
     <groupId>com.wojtekJrobertW.MenegerPilkarski</groupId>
     <artifactId>MenegerPilkarski</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <url>https://github.com/katorek/MenegerPilkarski</url>
 
-    
+    <name>Meneger Pilkarski</name>
+    <description>Glowny backend menegera pilkarskiego</description>
+
+    <scm>
+        <url>https://github.com/katorek/MenegerPilkarski</url>
+        <connection>scm:git:git://github.com/katorek/MenegerPilkarski.git</connection>
+        <developerConnection>scm:git:git@github.com:katorek/MenegerPilkarski.git</developerConnection>
+    </scm>
+
+    <properties>
+        <java.version>8</java.version>
+        <start-class>com.meneger.MenegerRestApplication</start-class>
+        <spring.version>1.5.8.RELEASE</spring.version>
+        <mysql-connector.version>5.1.30</mysql-connector.version>
+    </properties>
+
+    <developers>
+        <developer>
+            <email>wojciech.jaronski@gmail.com</email>
+            <name>Wojciech Jaroński</name>
+            <url>https://github.com/katorek</url>
+            <id>katorek</id>
+        </developer>
+        <developer>
+            <!--<email></email>--> <!-- todo mozesz dopisac swojego maila-->
+            <name>Robert Walicki</name>
+            <url>https://github.com/Arrowblast</url>
+            <id>Arrowblast</id>
+        </developer>
+    </developers>
+
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>1.5.8.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.3.12.RELEASE</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
