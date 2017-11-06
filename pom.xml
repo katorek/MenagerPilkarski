@@ -4,19 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.wojtekJrobertW.MenegerPilkarski</groupId>
-    <artifactId>MenegerPilkarski</artifactId>
+    <groupId>com.wojtekJrobertW.MenegerPilkarskiBackend</groupId>
+    <artifactId>MenegerPilkarskiBackend</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <url>https://github.com/katorek/MenegerPilkarski</url>
 
-    <name>Meneger Pilkarski</name>
+    <nazwa>Meneger Pilkarski</nazwa>
     <description>Glowny backend menegera pilkarskiego</description>
 
     <scm>
-        <url>https://github.com/katorek/MenegerPilkarski</url>
-        <connection>scm:git:git://github.com/katorek/MenegerPilkarski.git</connection>
-        <developerConnection>scm:git:git@github.com:katorek/MenegerPilkarski.git</developerConnection>
+        <url>https://github.com/katorek/MenegerPilkarskiBackend</url>
+        <connection>scm:git:git://github.com/katorek/MenegerPilkarskiBackend.git</connection>
+        <developerConnection>scm:git:git@github.com:katorek/MenegerPilkarskiBackend.git</developerConnection>
     </scm>
 
     <properties>
@@ -29,13 +29,13 @@
     <developers>
         <developer>
             <email>wojciech.jaronski@gmail.com</email>
-            <name>Wojciech Jaroński</name>
+            <nazwa>Wojciech Jaroński</nazwa>
             <url>https://github.com/katorek</url>
             <id>katorek</id>
         </developer>
         <developer>
             <!--<email></email>--> <!-- todo mozesz dopisac swojego maila-->
-            <name>Robert Walicki</name>
+            <nazwa>Robert Walicki</nazwa>
             <url>https://github.com/Arrowblast</url>
             <id>Arrowblast</id>
         </developer>

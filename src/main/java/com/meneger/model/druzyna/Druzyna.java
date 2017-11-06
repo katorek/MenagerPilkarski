@@ -18,7 +18,7 @@ public class Druzyna {
 
     @NotNull
     @Column(name = "NAZWA", length = NAME_MAX_LENGTH, unique = true)
-    private String name;
+    private String nazwa;
 
     public Integer getId() {
         return id;
@@ -28,11 +28,11 @@ public class Druzyna {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNazwa() {
+        return nazwa;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 }
