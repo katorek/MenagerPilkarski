@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="74D259B5-4948-1793-CFB3-8D1E350BB049" name="Bilet">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:22:15 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<synonymToDisplay>Bilety</synonymToDisplay>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Właściciel_biletu" id="F64D8357-9F85-FEB7-1FC8-7DA8FE803588">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:22:38 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cena" id="57BB83E0-657A-A51E-ECAE-47FD85B9DEC8">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:23:14 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Data" id="65A6DF79-1EFD-60C0-7565-99027A8ABEAB">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:24:36 UTC</createdTime>
+<generatorID>BBCAC891-D32F-033B-EDCD-87B8160122B4</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>3121EB9C-823B-96DD-3368-E2884F609D6E</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nazwa" id="93994AD6-6D6A-DA92-F5AC-5C4A48C84BCD">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:24:36 UTC</createdTime>
+<generatorID>BBCAC891-D32F-033B-EDCD-87B8160122B4</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>BF50D934-E8F4-522F-7E4A-F9E74F94596F</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Miejscowość" id="A9F1BFD3-00A5-AF61-B0E6-E9E156D3B1DD">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:24:36 UTC</createdTime>
+<generatorID>BBCAC891-D32F-033B-EDCD-87B8160122B4</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>631BA0E6-85FB-D7F5-9645-6590DD54BBEC</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Pesel" id="71F6FB91-5130-F5AE-6C80-03F6A6A85EAD">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:28:40 UTC</createdTime>
+<generatorID>34A1CADF-05A3-31C7-DD9C-FF1BCDDBE6ED</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>8C768118-BAB3-EC30-A4A4-F54925EEE48A</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

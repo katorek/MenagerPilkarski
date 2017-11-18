@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BDB3A375-815E-B94C-7833-5F406200EDF5" name="Kibic">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:28:14 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>AA4AE1F8-AAF0-8195-42C7-00ABC87B0998</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<synonymToDisplay>Kibice</synonymToDisplay>
+</Entity>

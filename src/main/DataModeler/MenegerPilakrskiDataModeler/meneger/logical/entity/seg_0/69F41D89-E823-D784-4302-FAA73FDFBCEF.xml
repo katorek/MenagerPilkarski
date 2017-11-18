@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="69F41D89-E823-D784-4302-FAA73FDFBCEF" name="Boisko">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:07:32 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<synonymToDisplay>Boiska</synonymToDisplay>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Ilość miejsc" id="A9EB978C-F0DD-30F0-BCDB-55319B22AECC">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:07:49 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nazwa" id="8A2ADCF5-962D-6551-92DA-255918AE0D0E">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:08:36 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Miejscowość" id="5A69D269-98AB-F5F5-7E3D-9925AEAC0CF8">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:09:10 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="30E7EF25-28BC-25DB-37A5-7765D934C356" name="Stadion PK">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:10:37 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8A2ADCF5-962D-6551-92DA-255918AE0D0E</attributeRef>
+<attributeRef>5A69D269-98AB-F5F5-7E3D-9925AEAC0CF8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
