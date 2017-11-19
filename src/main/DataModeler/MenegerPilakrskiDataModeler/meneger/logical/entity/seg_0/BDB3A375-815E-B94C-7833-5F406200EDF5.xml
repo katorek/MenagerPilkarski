@@ -16,4 +16,19 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <synonymToDisplay>Kibice</synonymToDisplay>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="czy_karta" id="41B69A71-AFCF-A9CD-6724-AA6B276B4F20">
+<createdBy>Robert W</createdBy>
+<createdTime>2017-11-19 19:58:43 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
 </Entity>

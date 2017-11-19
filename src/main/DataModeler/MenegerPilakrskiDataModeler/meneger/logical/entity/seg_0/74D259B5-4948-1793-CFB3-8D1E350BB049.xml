@@ -16,14 +16,15 @@
 <normalForm>Third</normalForm>
 <synonymToDisplay>Bilety</synonymToDisplay>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Właściciel_biletu" id="F64D8357-9F85-FEB7-1FC8-7DA8FE803588">
+<Attribute name="ID" id="F64D8357-9F85-FEB7-1FC8-7DA8FE803588">
 <createdBy>wojtas</createdBy>
 <createdTime>2017-11-18 15:22:38 UTC</createdTime>
 <ownerDesignName>meneger</ownerDesignName>
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Cena" id="57BB83E0-657A-A51E-ECAE-47FD85B9DEC8">
@@ -84,5 +85,30 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Znizka" id="194204FC-3F37-2B56-1A7D-516554782441">
+<createdBy>Robert W</createdBy>
+<createdTime>2017-11-19 19:42:25 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="64A8C9CE-EFD9-F5AB-8D53-14C3095C5062" name="Bilet PK">
+<createdBy>Robert W</createdBy>
+<createdTime>2017-11-19 19:52:16 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F64D8357-9F85-FEB7-1FC8-7DA8FE803588</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>
