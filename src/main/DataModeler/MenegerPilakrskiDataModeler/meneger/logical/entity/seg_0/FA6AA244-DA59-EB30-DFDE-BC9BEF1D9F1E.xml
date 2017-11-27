@@ -35,18 +35,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Pesel" id="4E971646-B803-8EAE-1BD7-BF2B4E9D424F">
-<createdBy>Robert W</createdBy>
-<createdTime>2017-11-19 19:49:04 UTC</createdTime>
-<generatorID>9B51C91E-9016-CB5A-B161-0A8EC98586FD</generatorID>
-<ownerDesignName>meneger</ownerDesignName>
-<engineerTo>
-<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
-</engineerTo>
-<referedAttribute>8C768118-BAB3-EC30-A4A4-F54925EEE48A</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Nazwa_Ligi" id="EB736B07-5894-935E-2871-281FFEA67593">
 <createdBy>Robert W</createdBy>
 <createdTime>2017-11-19 20:01:48 UTC</createdTime>

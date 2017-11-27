@@ -16,4 +16,16 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <synonymToDisplay>Stadiony</synonymToDisplay>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Chroni_przed_deszczem" id="5F5FFAF0-6292-A45C-50EB-2F08F998BC7C">
+<createdBy>wojta</createdBy>
+<createdTime>2017-11-20 08:08:33 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
 </Entity>

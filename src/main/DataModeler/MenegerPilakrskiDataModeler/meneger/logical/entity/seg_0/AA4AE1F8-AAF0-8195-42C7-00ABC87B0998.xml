@@ -46,6 +46,18 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Funkcja" id="0B19C972-FA41-6637-C62C-4493A4A98E4F">
+<createdBy>wojta</createdBy>
+<createdTime>2017-11-20 08:24:59 UTC</createdTime>
+<generatorID>C73EA88B-1B1F-DAF2-DBD0-0F22A20F69A6</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>47D091BD-1841-51E4-802B-B7C6194D93A9</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="397814D0-DC0E-F08F-08A9-6305362CDFE5" name="Osoba PK">
