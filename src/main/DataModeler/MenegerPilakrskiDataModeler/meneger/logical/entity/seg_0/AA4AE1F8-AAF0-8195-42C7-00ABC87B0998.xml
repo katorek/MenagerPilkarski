@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AA4AE1F8-AAF0-8195-42C7-00ABC87B0998" name="Osoba">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:03:27 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<synonymToDisplay>Ludzie</synonymToDisplay>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Imie" id="D72C45E4-B4C4-6C28-615F-8E277D7FBD37">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:03:59 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nazwisko" id="3EFB67BD-83AA-6EDE-BC89-8D315B596031">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:04:03 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Pesel" id="8C768118-BAB3-EC30-A4A4-F54925EEE48A">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:04:15 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Funkcja" id="0B19C972-FA41-6637-C62C-4493A4A98E4F">
+<createdBy>wojta</createdBy>
+<createdTime>2017-11-20 08:24:59 UTC</createdTime>
+<generatorID>C73EA88B-1B1F-DAF2-DBD0-0F22A20F69A6</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>47D091BD-1841-51E4-802B-B7C6194D93A9</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="397814D0-DC0E-F08F-08A9-6305362CDFE5" name="Osoba PK">
+<createdBy>wojtas</createdBy>
+<createdTime>2017-11-18 15:04:29 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8C768118-BAB3-EC30-A4A4-F54925EEE48A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
