@@ -1,7 +1,11 @@
 # MenagerPilkarski
-Menager piłkarski
-****
-Football manager
+Football manager (teams, football players, matches, stadiums). Adding, deleting, editing.  
+Project for database subject on Poznań University of Technology
+
+## Techonology
+Backend in Java. Spring boot, Hibernate, MySql.  
+  
+Frontend in separate project(propably in AngularJS)
 
 ## Requirements
 - JDK 8
