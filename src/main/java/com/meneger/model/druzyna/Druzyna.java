@@ -35,4 +35,12 @@ public class Druzyna {
     public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
     }
+
+    @Override
+    public String toString() {
+        return "Druzyna{" +
+                "id=" + id +
+                ", nazwa='" + nazwa + '\'' +
+                '}';
+    }
 }
