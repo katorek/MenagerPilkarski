@@ -23,7 +23,21 @@
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cena_biletu" id="1FB6C11E-3CAB-A65E-4550-FDB014774CF9">
+<createdBy>wojta</createdBy>
+<createdTime>2017-12-15 16:52:23 UTC</createdTime>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Wynik_meczu" id="FCD78C48-9ED8-C41C-3BC7-A86ABCEEB709">
@@ -34,7 +48,9 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Nazwa" id="BF50D934-E8F4-522F-7E4A-F9E74F94596F">
@@ -46,7 +62,8 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>8A2ADCF5-962D-6551-92DA-255918AE0D0E</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Miejscowość" id="631BA0E6-85FB-D7F5-9645-6590DD54BBEC">
@@ -58,7 +75,8 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>5A69D269-98AB-F5F5-7E3D-9925AEAC0CF8</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -67,8 +85,9 @@
 <createdBy>wojtas</createdBy>
 <createdTime>2017-11-18 15:07:11 UTC</createdTime>
 <ownerDesignName>meneger</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

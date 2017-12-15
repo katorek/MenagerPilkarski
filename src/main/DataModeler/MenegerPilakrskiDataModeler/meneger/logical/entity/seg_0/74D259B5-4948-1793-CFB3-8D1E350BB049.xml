@@ -25,16 +25,7 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Cena" id="57BB83E0-657A-A51E-ECAE-47FD85B9DEC8">
-<createdBy>wojtas</createdBy>
-<createdTime>2017-11-18 15:23:14 UTC</createdTime>
-<ownerDesignName>meneger</ownerDesignName>
-<engineerTo>
-<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
-</engineerTo>
-<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Data" id="65A6DF79-1EFD-60C0-7565-99027A8ABEAB">
@@ -46,7 +37,8 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>3121EB9C-823B-96DD-3368-E2884F609D6E</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Nazwa" id="93994AD6-6D6A-DA92-F5AC-5C4A48C84BCD">
@@ -58,7 +50,8 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>BF50D934-E8F4-522F-7E4A-F9E74F94596F</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Miejscowość" id="A9F1BFD3-00A5-AF61-B0E6-E9E156D3B1DD">
@@ -70,7 +63,8 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>631BA0E6-85FB-D7F5-9645-6590DD54BBEC</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Pesel" id="71F6FB91-5130-F5AE-6C80-03F6A6A85EAD">
@@ -82,7 +76,9 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>8C768118-BAB3-EC30-A4A4-F54925EEE48A</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>11 CHAR</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Znizka" id="194204FC-3F37-2B56-1A7D-516554782441">
@@ -93,7 +89,9 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -102,8 +100,9 @@
 <createdBy>Robert W</createdBy>
 <createdTime>2017-11-19 19:52:16 UTC</createdTime>
 <ownerDesignName>meneger</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

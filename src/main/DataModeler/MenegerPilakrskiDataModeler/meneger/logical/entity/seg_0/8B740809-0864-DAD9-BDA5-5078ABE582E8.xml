@@ -24,8 +24,11 @@
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 </Entity>

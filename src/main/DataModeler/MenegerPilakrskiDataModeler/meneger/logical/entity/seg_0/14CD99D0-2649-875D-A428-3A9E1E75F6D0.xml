@@ -24,6 +24,7 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Rodzaj" id="90E443B0-8A6B-2F89-A95E-7FD3E945E7D2">
@@ -35,6 +36,7 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Nazwa1" id="1285266D-DD3B-B7E3-EDB4-E02A3A0F1519">
@@ -46,7 +48,8 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>1284185A-1B2C-CB8B-E9DA-87DC4AF8360B</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -55,8 +58,9 @@
 <createdBy>Robert W</createdBy>
 <createdTime>2017-11-19 19:50:48 UTC</createdTime>
 <ownerDesignName>meneger</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

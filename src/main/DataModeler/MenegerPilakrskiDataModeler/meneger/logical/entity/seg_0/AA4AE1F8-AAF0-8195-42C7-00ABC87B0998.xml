@@ -23,8 +23,11 @@
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Nazwisko" id="3EFB67BD-83AA-6EDE-BC89-8D315B596031">
 <createdBy>wojtas</createdBy>
@@ -33,8 +36,11 @@
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Pesel" id="8C768118-BAB3-EC30-A4A4-F54925EEE48A">
 <createdBy>wojtas</createdBy>
@@ -43,8 +49,11 @@
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>11 CHAR</dataTypeSize>
+<ownDataTypeParameters>11 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Funkcja" id="0B19C972-FA41-6637-C62C-4493A4A98E4F">
 <createdBy>wojta</createdBy>
@@ -55,7 +64,8 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>47D091BD-1841-51E4-802B-B7C6194D93A9</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -64,8 +74,9 @@
 <createdBy>wojtas</createdBy>
 <createdTime>2017-11-18 15:04:29 UTC</createdTime>
 <ownerDesignName>meneger</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

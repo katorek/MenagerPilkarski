@@ -22,7 +22,9 @@
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Kraj" id="B9CF78D3-EF43-AA6A-472D-752353F71EB8">
@@ -32,7 +34,9 @@
 <engineerTo>
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Nazwa_Ligi" id="EB736B07-5894-935E-2871-281FFEA67593">
@@ -47,6 +51,7 @@
 <referedAttribute>A4C47245-4B12-634C-A6FA-01082EB250B8</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -55,8 +60,9 @@
 <createdBy>wojtas</createdBy>
 <createdTime>2017-11-18 14:59:24 UTC</createdTime>
 <ownerDesignName>meneger</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
