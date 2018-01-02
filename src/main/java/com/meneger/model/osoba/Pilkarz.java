@@ -1,62 +1,56 @@
 package com.meneger.model.osoba;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.meneger.model.druzyna.Druzyna;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PILKARZE")
-public class Pilkarz {
+public class Pilkarz extends Osoba{
     private static final int NAME_MAX_LENGTH = 30;
     private static final int PESEL_LENGTH = 11;
 
-    @Id
-    @NotNull
-    @Column(name = "ID")
-    private Integer id;
+    @ManyToOne
+    @JoinColumn(name = "DRUZYNA_ID")
+    private Druzyna druzyna;
 
-    @Column(name = "PESEL", length = PESEL_LENGTH, unique = true)
-    private String pesel;
+    @Column(name = "NUMER")
+    private Integer numer;
 
-    @NotNull
-    @Column(name = "IMIE", length = NAME_MAX_LENGTH)
-    private String imie;
+    @Enumerated(EnumType.STRING)
+    private Pozycja pozycja;
 
-    @NotNull
-    @Column(name = "NAZWISKO",length = NAME_MAX_LENGTH)
-    private String nazwisko;
-
-    public Integer getId() {
-        return id;
+    public Druzyna getDruzyna() {
+        return druzyna;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setDruzyna(Druzyna druzyna) {
+        this.druzyna = druzyna;
     }
 
-    public String getPesel() {
-        return pesel;
+    public Integer getNumer() {
+        return numer;
     }
 
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
+    public void setNumer(Integer numer) {
+        this.numer = numer;
     }
 
-    public String getImie() {
-        return imie;
+    public Pozycja getPozycja() {
+        return pozycja;
     }
 
-    public void setImie(String imie) {
-        this.imie = imie;
+    public void setPozycja(Pozycja pozycja) {
+        this.pozycja = pozycja;
     }
 
-    public String getNazwisko() {
-        return nazwisko;
-    }
-
-    public void setNazwisko(String nazwisko) {
-        this.nazwisko = nazwisko;
+    @Override
+    public String toString() {
+        return "Pilkarz{" +
+                "druzyna=" + druzyna +
+                ", numer=" + numer +
+                ", pozycja=" + pozycja +
+                "} " + super.toString();
     }
 }

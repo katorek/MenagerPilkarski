@@ -1,15 +1,20 @@
 package com.meneger.model.druzyna;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.meneger.model.osoba.Pilkarz;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "DRUZYNY")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 public class Druzyna {
-    public static final int NAME_MAX_LENGTH = 30;
+    private static final int NAME_MAX_LENGTH = 30;
 
     @Id
     @NotNull
@@ -19,6 +24,20 @@ public class Druzyna {
     @NotNull
     @Column(name = "NAZWA", length = NAME_MAX_LENGTH, unique = true)
     private String nazwa;
+
+    @OneToMany(mappedBy = "druzyna", fetch = FetchType.LAZY)
+    private Set<Pilkarz> pilkarze;
+
+    @OneToMany(mappedBy = "druzyna", fetch = FetchType.LAZY)
+    private Set<Sponsor> sponsorzy;
+
+    public Set<Pilkarz> getPilkarze() {
+        return pilkarze;
+    }
+
+    public void setPilkarze(Set<Pilkarz> pilkarze) {
+        this.pilkarze = pilkarze;
+    }
 
     public Integer getId() {
         return id;
@@ -36,11 +55,32 @@ public class Druzyna {
         this.nazwa = nazwa;
     }
 
+    public Set<Sponsor> getSponsorzy() {
+        return sponsorzy;
+    }
+
+    public void setSponsorzy(Set<Sponsor> sponsorzy) {
+        this.sponsorzy = sponsorzy;
+    }
+
     @Override
     public String toString() {
         return "Druzyna{" +
                 "id=" + id +
                 ", nazwa='" + nazwa + '\'' +
                 '}';
+    }
+
+    public void clearPilkarze() {
+        setPilkarze(null);
+    }
+
+    public void clearSponsorzy() {
+        setSponsorzy(null);
+    }
+
+    public void clear() {
+        clearSponsorzy();
+        clearPilkarze();
     }
 }

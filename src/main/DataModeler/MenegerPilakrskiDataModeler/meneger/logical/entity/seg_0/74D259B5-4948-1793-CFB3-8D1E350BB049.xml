@@ -37,6 +37,7 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>3121EB9C-823B-96DD-3368-E2884F609D6E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -50,6 +51,7 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>BF50D934-E8F4-522F-7E4A-F9E74F94596F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -63,6 +65,7 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>631BA0E6-85FB-D7F5-9645-6590DD54BBEC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -76,10 +79,11 @@
 <item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
 </engineerTo>
 <referedAttribute>8C768118-BAB3-EC30-A4A4-F54925EEE48A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>11 CHAR</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>11 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Znizka" id="194204FC-3F37-2B56-1A7D-516554782441">
 <createdBy>Robert W</createdBy>
@@ -92,6 +96,34 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Gospodarz" id="AC7365A4-E665-BA99-2989-E083D39FC223">
+<createdBy>wojta</createdBy>
+<createdTime>2017-12-17 18:18:26 UTC</createdTime>
+<generatorID>BBCAC891-D32F-033B-EDCD-87B8160122B4</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>43A3913C-17F6-6A76-BA53-F7A571AF8B12</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Przyjezdni" id="40CB0E9B-942C-7885-3BB1-C87AC1BE5A72">
+<createdBy>wojta</createdBy>
+<createdTime>2017-12-17 18:18:28 UTC</createdTime>
+<generatorID>BBCAC891-D32F-033B-EDCD-87B8160122B4</generatorID>
+<ownerDesignName>meneger</ownerDesignName>
+<engineerTo>
+<item key="F67A7309-DFEC-6DE1-935C-3CC436639B7A" value="true"/>
+</engineerTo>
+<referedAttribute>D070061C-2903-B601-CACF-CA91529DCCF5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
