@@ -27,19 +27,19 @@ INSERT INTO sponsorzy (NAZWA, RODZAJ, DRUZYNA_ID) VALUES
 
 CREATE TABLE kibice
 (
-  ID         INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  PESEL      VARCHAR(11) NULL,
-  IMIE       VARCHAR(30) NOT NULL,
-  NAZWISKO   VARCHAR(30) NOT NULL,
-  ZNIZKA TINYINT(1),
+  ID       INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  PESEL    VARCHAR(11) NULL,
+  IMIE     VARCHAR(30) NOT NULL,
+  NAZWISKO VARCHAR(30) NOT NULL,
+  ZNIZKA   TINYINT(1),
   CONSTRAINT PESEL
   UNIQUE (PESEL)
 );
 
 INSERT INTO kibice (PESEL, IMIE, NAZWISKO, ZNIZKA) VALUES
-  (1,'Wojtek','Jaro','0'),
-  (2,'Jan','Hal','1'),
-  (3,'Piotr','Krylski','1'),
-  (4,'Kasia','Potek','1'),
-  (5,'Maciej','Kaszuba','0'),
-  (6,'Zosia','Kowalska','1');
+  (1, 'Wojtek', 'Jaro', '0'),
+  (2, 'Jan', 'Hal', '1'),
+  (3, 'Piotr', 'Krylski', '1'),
+  (4, 'Kasia', 'Potek', '1'),
+  (5, 'Maciej', 'Kaszuba', '0'),
+  (6, 'Zosia', 'Kowalska', '1');
