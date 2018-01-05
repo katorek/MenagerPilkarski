@@ -3,7 +3,7 @@ spring:
     rest:
       return-body-on-create: true
   application:
-    nazwa: MenegerPilkarski
+    name: MenegerPilkarski
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/meneger_pilkarski
