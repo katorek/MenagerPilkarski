@@ -26,10 +26,10 @@ public class OrlikRestController extends AbstractRestController {
     @GetMapping
     public ResponseEntity<List<Orlik>> getOrliki(){
         List<Orlik> orliki = orlikRepository.findAll();
-//        orliki.forEach(e -> {
-//            e.getBoisko().setOrlik(null);
-//            e.getBoisko().setStadion(null);
-//        });
+        orliki.forEach(e -> {
+            e.getBoisko().setOrlik(null);
+            e.getBoisko().setStadion(null);
+        });
         return ResponseEntity.ok(orliki);
     }
 }
