@@ -63,11 +63,16 @@ angular.module('myApp', [
     'ngTouch',
     'ngRoute',
     'ngMessages',
+    'myApp.welcome',
     'myApp.druzyny',
-    'myApp.view2',
+    'myApp.pilkarze',
+    'myApp.kibice',
+    'myApp.sponsorzy',
+    'myApp.orliki',
+    'myApp.stadiony',
     'myApp.version'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.otherwise({redirectTo: '/welcome'});
 }]);

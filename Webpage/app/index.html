@@ -21,16 +21,15 @@
 </head>
 <body>
 <ul class="menu">
-    <li><a href="#!/view1">Druzyny</a></li>
-    <li><a href="#!/view2">view2</a></li>
+    <li><a href="#!/druzyny">Druzyny</a></li>
+    <li><a href="#!/pilkarze">Pilkarze</a></li>
+    <li><a href="#!/kibice">Kibice</a></li>
+    <li><a href="#!/sponsorzy">Sponsorzy</a></li>
+    <li><a href="#!/orliki">Orliki</a></li>
+    <li><a href="#!/stadiony">Stadiony</a></li>
 </ul>
 
 <!--
-        {name: 'Druzyny', url: 'data/teams.html', hidden: false},
-        {name: 'Zawodnicy', url: 'data/players.html', hidden: false},
-        {name: 'Kibice', url: 'data/kibice.html', hidden: false},
-        {name: 'Sponsorzy', url: 'data/sponsors.html', hidden: false},
-        {name: 'Orliki', url: 'data/orliki.html', hidden: false},
         {name: 'Stadiony', url: 'data/stadiony.html', hidden: false},
 -->
 <!--[if lt IE 7]>
@@ -38,7 +37,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div ng-view></div>
+<div ng-view align="center"></div>
 
 <div>Angular seed app: v<span app-version></span></div>
 
@@ -61,8 +60,13 @@ angular-animate.js
 angular-messages.js
 -->
 <script src="app.js"></script>
-<script src="view1/druzyny.js"></script>
-<script src="view2/view2.js"></script>
+<script src="stronki/welcome/welcome.js"></script>
+<script src="stronki/druzyna/druzyny.js"></script>
+<script src="stronki/pilkarze/pilkarze.js"></script>
+<script src="stronki/kibice/kibice.js"></script>
+<script src="stronki/sponsorzy/sponsorzy.js"></script>
+<script src="stronki/orliki/orliki.js"></script>
+<script src="stronki/stadiony/stadiony.js"></script>
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>

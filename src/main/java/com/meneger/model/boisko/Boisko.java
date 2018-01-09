@@ -89,4 +89,10 @@ public class Boisko {
     public void setStadion(Stadion stadion) {
         this.stadion = stadion;
     }
+
+    public void clear() {
+        setStadion(null);
+        setOrlik(null);
+        setMecze(null);
+    }
 }

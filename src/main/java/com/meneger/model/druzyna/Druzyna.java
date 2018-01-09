@@ -71,16 +71,8 @@ public class Druzyna {
                 '}';
     }
 
-    public void clearPilkarze() {
-        setPilkarze(null);
-    }
-
-    public void clearSponsorzy() {
-        setSponsorzy(null);
-    }
-
     public void clear() {
-        clearSponsorzy();
-        clearPilkarze();
+        setSponsorzy(null);
+        setPilkarze(null);
     }
 }

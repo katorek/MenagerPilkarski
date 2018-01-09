@@ -57,4 +57,14 @@ public class Sponsor {
     public void setDruzyna(Druzyna druzyna) {
         this.druzyna = druzyna;
     }
+
+    @Override
+    public String toString() {
+        return "Sponsor{" +
+                "id=" + id +
+                ", nazwa='" + nazwa + '\'' +
+                ", rodzaj='" + rodzaj + '\'' +
+                ", druzyna=" + druzyna +
+                '}';
+    }
 }

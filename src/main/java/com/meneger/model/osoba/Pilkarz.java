@@ -7,20 +7,16 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PILKARZE")
-public class Pilkarz extends Osoba{
+public class Pilkarz extends Osoba {
     private static final int NAME_MAX_LENGTH = 30;
     private static final int PESEL_LENGTH = 11;
 
-    @ManyToOne
-    @JoinColumn(name = "DRUZYNA_ID")
     private Druzyna druzyna;
-
-    @Column(name = "NUMER")
     private Integer numer;
-
-    @Enumerated(EnumType.STRING)
     private Pozycja pozycja;
 
+    @ManyToOne
+    @JoinColumn(name = "DRUZYNA_ID")
     public Druzyna getDruzyna() {
         return druzyna;
     }
@@ -29,6 +25,7 @@ public class Pilkarz extends Osoba{
         this.druzyna = druzyna;
     }
 
+    @Column(name = "NUMER")
     public Integer getNumer() {
         return numer;
     }
@@ -37,6 +34,7 @@ public class Pilkarz extends Osoba{
         this.numer = numer;
     }
 
+    @Enumerated(EnumType.STRING)
     public Pozycja getPozycja() {
         return pozycja;
     }

@@ -14,22 +14,14 @@ public class Osoba {
     private static final int NAME_MAX_LENGTH = 30;
     private static final int PESEL_LENGTH = 11;
 
+    private Integer id;
+    private String pesel;
+    private String imie;
+    private String nazwisko;
+
     @Id
     @NotNull
     @Column(name = "ID")
-    private Integer id;
-
-    @Column(name = "PESEL", length = PESEL_LENGTH, unique = true)
-    private String pesel;
-
-    @NotNull
-    @Column(name = "IMIE", length = NAME_MAX_LENGTH)
-    private String imie;
-
-    @NotNull
-    @Column(name = "NAZWISKO",length = NAME_MAX_LENGTH)
-    private String nazwisko;
-
     public Integer getId() {
         return id;
     }
@@ -38,6 +30,7 @@ public class Osoba {
         this.id = id;
     }
 
+    @Column(name = "PESEL", length = PESEL_LENGTH, unique = true)
     public String getPesel() {
         return pesel;
     }
@@ -46,6 +39,8 @@ public class Osoba {
         this.pesel = pesel;
     }
 
+    @NotNull
+    @Column(name = "IMIE", length = NAME_MAX_LENGTH)
     public String getImie() {
         return imie;
     }
@@ -54,6 +49,8 @@ public class Osoba {
         this.imie = imie;
     }
 
+    @NotNull
+    @Column(name = "NAZWISKO", length = NAME_MAX_LENGTH)
     public String getNazwisko() {
         return nazwisko;
     }

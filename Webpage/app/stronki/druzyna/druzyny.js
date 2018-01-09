@@ -3,20 +3,16 @@
 angular.module('myApp.druzyny', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/view1', {
-            templateUrl: 'view1/druzyny.html',
+        $routeProvider.when('/druzyny', {
+            templateUrl: 'stronki/druzyna/druzyny.html',
             controller: 'DruzynyCtrl'
         });
     }])
 
-    .factory('DruzynaF',function ($resource) {
-        return $resource(url + 'druzyny/:id', {id: '@id'}, {
+    .service('DruzynaS',function ($resource) {
+        this.Factory = $resource(url + 'druzyny/:id', {id: '@id'}, {
             'update': {method: 'PUT'}
         });
-    })
-
-    .service('DruzynaS',function (DruzynaF) {
-        this.Factory = DruzynaF;
         this.columns = [
             {
                 name: 'id',

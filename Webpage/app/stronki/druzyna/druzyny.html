@@ -1,11 +1,13 @@
 <div>
     <form novalidate class="simple-form">
-        <input type="text" ng-model="entry.nazwa" placeholder="Nazwa"/>
+        <p>Dodawanie nowej druzyny</p><br/>
+        <input type="text" ng-model="entry.nazwa" placeholder="Nazwa"/><br/>
         <input type="submit" ng-click="add(entry)" value="Dodaj"/>
     </form>
 </div>
 
-<div ng-hide="!showEdit" ng-show="showEdit">
+<!--<div ng-hide="!showEdit" ng-show="showEdit">-->
+<div ng-show="showEdit">
     <form novalidate class="simple-form">
         <label>Nazwa: <input type="text" ng-model="edited.nazwa"></label>
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
