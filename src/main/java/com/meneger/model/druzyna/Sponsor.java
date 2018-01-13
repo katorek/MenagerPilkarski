@@ -2,6 +2,7 @@ package com.meneger.model.druzyna;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.meneger.model.Template;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 //@JsonIdentityInfo(
 //        generator = ObjectIdGenerators.PropertyGenerator.class,
 //        property = "id")
-public class Sponsor {
+public class Sponsor implements Template{
 
     @Id @GeneratedValue
     @Column(name = "ID")
@@ -66,5 +67,15 @@ public class Sponsor {
                 ", rodzaj='" + rodzaj + '\'' +
                 ", druzyna=" + druzyna +
                 '}';
+    }
+
+    @Override
+    public void prepare() {
+        getDruzyna().clear();
+    }
+
+    @Override
+    public void clear() {
+        setDruzyna(null);
     }
 }

@@ -1,5 +1,6 @@
 package com.meneger.model.mecz;
 
+import com.meneger.model.Template;
 import com.meneger.model.boisko.Boisko;
 import com.meneger.model.druzyna.Druzyna;
 
@@ -9,14 +10,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "MECZE")
-public class Mecz {
+public class Mecz implements Template {
     private Integer id;
     private Boisko boisko;
     private Date data;
-
     private Double cenaBiletu;
     private String wynikMeczu;
-
     private Druzyna gospodarz;
     private Druzyna przyjezdni;
     private Set<Bilet> bilety;
@@ -39,7 +38,8 @@ public class Mecz {
         this.wynikMeczu = wynikMeczu;
     }
 
-    @ManyToOne @JoinColumn(name="GOSPODARZ_ID")
+    @ManyToOne
+    @JoinColumn(name = "GOSPODARZ_ID")
     public Druzyna getGospodarz() {
         return gospodarz;
     }
@@ -48,7 +48,8 @@ public class Mecz {
         this.gospodarz = gospodarz;
     }
 
-    @ManyToOne @JoinColumn(name="PRZYJEZDNI_ID")
+    @ManyToOne
+    @JoinColumn(name = "PRZYJEZDNI_ID")
     public Druzyna getPrzyjezdni() {
         return przyjezdni;
     }
@@ -57,7 +58,9 @@ public class Mecz {
         this.przyjezdni = przyjezdni;
     }
 
-    @Id @GeneratedValue @Column(name = "ID")
+    @Id
+    @GeneratedValue
+    @Column(name = "ID")
     public Integer getId() {
         return id;
     }
@@ -75,7 +78,8 @@ public class Mecz {
         this.data = data;
     }
 
-    @ManyToOne @JoinColumn(name = "BOISKO_ID")
+    @ManyToOne
+    @JoinColumn(name = "BOISKO_ID")
     public Boisko getBoisko() {
         return boisko;
     }
@@ -93,6 +97,29 @@ public class Mecz {
         this.bilety = bilety;
     }
 
+    @Override
+    public String toString() {
+        return "Mecz{" +
+                "id=" + id +
+                ", boisko=" + boisko +
+                ", data=" + data +
+                ", cenaBiletu=" + cenaBiletu +
+                ", wynikMeczu='" + wynikMeczu + '\'' +
+                ", gospodarz=" + gospodarz +
+                ", przyjezdni=" + przyjezdni +
+                ", bilety=" + bilety +
+                '}';
+    }
+
+    @Override
+    public void prepare() {
+        getBoisko().clear();
+        getBilety().forEach(Bilet::clear);
+        getPrzyjezdni().clear();
+        getGospodarz().clear();
+    }
+
+    @Override
     public void clear() {
         setBoisko(null);
         setBilety(null);

@@ -41,11 +41,16 @@ angular.module('myApp.stadiony', ['ngRoute'])
         ];
 
         this.data = [
-            {id: 0, nazwa: '', boiska: {id: 0, iloscMiejsc: 0, miejscowosc: ''}, chroniPrzedDeszczem: false}
+            {
+                id: 0,
+                nazwa: '',
+                boisko: {id: 0, nazwa: '', iloscMiejsc: 0, miejscowosc: '', orlik: null, stadion: null, mecze: null},
+                chroniPrzedDeszczem: false
+            }
         ];
     })
 
-    .controller('StadionCtrl', function ($scope, $filter, StadionS) {
+    .controller('StadionCtrl', function ($scope, $filter, StadionS,BoiskaF) {
         const Factory = StadionS.Factory;
         let data = StadionS.data;
         const empty = function () {
@@ -72,6 +77,7 @@ angular.module('myApp.stadiony', ['ngRoute'])
         };
 
         $scope.add = function (row) {//musi
+            row.boisko.id = null;
             addF(row, Factory, reload);
             $scope.entry = empty();
         };
@@ -86,7 +92,31 @@ angular.module('myApp.stadiony', ['ngRoute'])
         };
 
         $scope.update = function (row) {//musi
-            updateF(row, Factory, reload);
+            // console.log(row.boisko);
+            // let boi = copyOf(row.boisko);
+            // let stad = row;
+            // stad.boisko = null;
+            //
+            // boi.stadion = stad;
+            // console.log(boi);
+            //
+            // updateF(boi,BoiskaF,reload);
+            console.log(row);
+            // BoiskaF.query()
+
+            let entry = copyOf(row);
+            const json = angular.toJson(entry);
+            const id = entry.id;
+            Factory.update({id: id},json, function () {
+                reload();
+            }, function (r) {
+                alert(r);
+            });
+
+            // updateF(row,BoiskaF,reload);
+
+            // updateF(row,Factory,reload);
+            // updateF(row,)
             $scope.showEdit = false;
             $scope.edited = empty();
         };

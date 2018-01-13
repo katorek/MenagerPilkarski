@@ -1,5 +1,6 @@
 package com.meneger.model.osoba;
 
+import com.meneger.model.Template;
 import com.meneger.model.mecz.Bilet;
 import org.hibernate.annotations.Type;
 
@@ -8,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "KIBICE")
-public class Kibic extends Osoba {
+public class Kibic extends Osoba implements Template{
     private boolean znizka;
     private Set<Bilet> bilety;
 
@@ -30,6 +31,12 @@ public class Kibic extends Osoba {
         this.bilety = bilety;
     }
 
+    @Override
+    public void prepare() {
+        getBilety().forEach(Bilet::clear);
+    }
+
+    @Override
     public void clear() {
         setBilety(null);
     }

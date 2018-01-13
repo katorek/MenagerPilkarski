@@ -1,8 +1,11 @@
 package com.meneger.controllers.Boiska;
 
 import com.meneger.controllers.AbstractRestController;
+import com.meneger.model.boisko.Boisko;
 import com.meneger.model.boisko.Orlik;
+import com.meneger.repositories.BoiskoRepository;
 import com.meneger.repositories.OrlikRepository;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,53 +17,74 @@ import java.util.List;
 public class OrlikRestController extends AbstractRestController<Orlik, OrlikRepository> {
     static final String CONTROLLER_BASE = "/orliki";
 
+
+
+//    @Autowired
+//    public OrlikRestController(OrlikRepository orlikRepository, BoiskoRepository boiskoRepository) {
+//        super(orlikRepository,boiskoRepository);
+//    }
+
+//    @GetMapping
+//    public ResponseEntity<List<Orlik>> getList(){
+//        List<Orlik> orliki = repository.findAll();
+//        orliki.forEach(e -> e.getBoisko().clear());
+//        return ResponseEntity.ok(orliki);
+//    }
+    private final BoiskoRepository boiskoRepository;
+
 //    private final OrlikRepository orlikRepository;
 
     @Autowired
-    public OrlikRestController(OrlikRepository orlikRepository) {
+    public OrlikRestController(OrlikRepository orlikRepository, BoiskoRepository boiskoRepository) {
         super(orlikRepository);
-//        this.orlikRepository = orlikRepository;
+        this.boiskoRepository = boiskoRepository;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Orlik>> getList(){
-        List<Orlik> orliki = repository.findAll();
-        orliki.forEach(e -> e.getBoisko().clear());
-        return ResponseEntity.ok(orliki);
-    }
-
-//    @DeleteMapping(path = "/{id}")
-//    public ResponseEntity delete(@PathVariable Integer id) {
-//        try {
-//            repository.delete(id);
-//        } catch (Exception e) {
+//    @Override
+//    @PostMapping
+//    public ResponseEntity add(@RequestBody Orlik orlik) {
+//        System.err.println("Orlik POST: "+orlik.toString());
+//        orlik.setId(0);
+//        Boisko b = orlik.getBoisko();
+//        System.err.println("B: "+b.toString());
+//        //todo wyszykac
+//        try{
+////            boiskoRepository.save(b);
+//            repository.save(orlik);
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
 //            return ResponseEntity.unprocessableEntity().build();
 //        }
 //        return ResponseEntity.ok().build();
 //    }
-//
-    @PostMapping
-    public ResponseEntity add(@RequestBody Orlik orlik) {
-        try {
-            orlik.setId(0);
+
+    private Boisko resolveNullId(Boisko temp){
+        List<Boisko> boiska = boiskoRepository.findAll();
+        for (Boisko b :
+                boiska) {
+            if(temp.getNazwa().equals(b.getNazwa())) return b;
+        }
+        return temp;
+    }
+
+    @Override
+    @PutMapping(path = "/{id}")
+    public ResponseEntity update(@PathVariable Integer id, @RequestBody Orlik orlik) {
+//        Boisko b = (Boisko) boiska.stream().filter(e -> e.getNazwa().equals(orlik.getBoisko().getNazwa())).toArray()[0];
+//        System.err.println("b:"+b.toString());
+//        orlik.setBoisko(resolveNullId(orlik.getBoisko()));
+//        orlik.getBoisko();
+        orlik.setId(id);
+//        orlik.setBoisko(b);
+//        System.err.println("id: "+id+ "orlik: "+orlik.toString());
+        try{
             repository.save(orlik);
-        } catch (Exception e) {
+            return ResponseEntity.ok().build();
+        }catch (Exception e){
+            e.printStackTrace();
             return ResponseEntity.unprocessableEntity().build();
         }
-        return ResponseEntity.ok().build();
-    }
-//
-//    @PutMapping(path = "/{id}")
-//    public ResponseEntity update(@PathVariable Integer id,
-//                                 @RequestBody Orlik orlik) {
-//        if (!repository.exists(id))
-//            return ResponseEntity.notFound().build();
-//        try {
-//            repository.save(orlik);
-//        } catch (Exception e) {
-//            return ResponseEntity.unprocessableEntity().build();
-//        }
-//        return ResponseEntity.ok().build();
-//    }
 
+    }
 }

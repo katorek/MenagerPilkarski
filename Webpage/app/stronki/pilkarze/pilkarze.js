@@ -120,7 +120,6 @@ angular.module('myApp.pilkarze', ['ngRoute'])
 
         reload();
 
-
         $scope.grid = { //musi
             enableFiltering: true,
             enableSorting: true,

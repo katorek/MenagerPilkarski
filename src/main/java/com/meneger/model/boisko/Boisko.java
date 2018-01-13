@@ -3,6 +3,7 @@ package com.meneger.model.boisko;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.meneger.model.Template;
 import com.meneger.model.mecz.Mecz;
 import com.sun.istack.internal.Nullable;
 
@@ -12,20 +13,22 @@ import java.util.Set;
 
 @Entity
 @Table(name = "BOISKA")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+//        property = "id")
 @JsonSerialize
-public class Boisko {
-    private Integer id;
-    private Integer iloscMiejsc;
-    private String miejscowosc;
-    private String nazwa;
-    private Orlik orlik;
-    private Stadion stadion;
+public class Boisko implements Template {
+    private Integer id;//
+    private Integer iloscMiejsc;//
+    private String miejscowosc;//
+    private String nazwa;//
+    private Orlik orlik;//
+    private Stadion stadion;//
     private Set<Mecz> mecze;
 
-    @Id @GeneratedValue @Column(name = "ID")
+    @Id
+    @GeneratedValue
+    @Column(name = "ID")
     public Integer getId() {
         return id;
     }
@@ -34,7 +37,8 @@ public class Boisko {
         this.id = id;
     }
 
-    @NotNull @Column(name = "ILOSC_MIEJSC")
+    @NotNull
+    @Column(name = "ILOSC_MIEJSC")
     public Integer getIloscMiejsc() {
         return iloscMiejsc;
     }
@@ -43,7 +47,8 @@ public class Boisko {
         this.iloscMiejsc = iloscMiejsc;
     }
 
-    @NotNull @Column(name = "MIEJSCOWOSC")
+    @NotNull
+    @Column(name = "MIEJSCOWOSC")
     public String getMiejscowosc() {
         return miejscowosc;
     }
@@ -52,7 +57,8 @@ public class Boisko {
         this.miejscowosc = miejscowosc;
     }
 
-    @NotNull @Column(name = "nazwa")
+    @NotNull
+    @Column(name = "nazwa")
     public String getNazwa() {
         return nazwa;
     }
@@ -90,6 +96,27 @@ public class Boisko {
         this.stadion = stadion;
     }
 
+    @Override
+    public String toString() {
+        return "Boisko{" +
+                "id=" + id +
+                ", iloscMiejsc=" + iloscMiejsc +
+                ", miejscowosc='" + miejscowosc + '\'' +
+                ", nazwa='" + nazwa + '\'' +
+                ", orlik=" + orlik +
+                ", stadion=" + stadion +
+                ", mecze=" + mecze +
+                '}';
+    }
+
+    @Override
+    public void prepare() {
+        getMecze().forEach(Mecz::clear);
+        if(getOrlik()!=null)getOrlik().clear();
+        if(getStadion()!=null)getStadion().clear();
+    }
+
+    @Override
     public void clear() {
         setStadion(null);
         setOrlik(null);

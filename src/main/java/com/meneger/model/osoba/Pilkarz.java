@@ -1,5 +1,6 @@
 package com.meneger.model.osoba;
 
+import com.meneger.model.Template;
 import com.meneger.model.druzyna.Druzyna;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PILKARZE")
-public class Pilkarz extends Osoba {
+public class Pilkarz extends Osoba implements Template{
     private static final int NAME_MAX_LENGTH = 30;
     private static final int PESEL_LENGTH = 11;
 
@@ -50,5 +51,15 @@ public class Pilkarz extends Osoba {
                 ", numer=" + numer +
                 ", pozycja=" + pozycja +
                 "} " + super.toString();
+    }
+
+    @Override
+    public void prepare() {
+        getDruzyna().clear();
+    }
+
+    @Override
+    public void clear() {
+        setDruzyna(null);
     }
 }

@@ -1,12 +1,13 @@
 package com.meneger.model.mecz;
 
+import com.meneger.model.Template;
 import com.meneger.model.osoba.Kibic;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "BILETY")
-public class Bilet {
+public class Bilet implements Template{
     private Integer id;
     private Mecz mecz;
     private double znizka;
@@ -48,6 +49,13 @@ public class Bilet {
         this.kibic = kibic;
     }
 
+    @Override
+    public void prepare() {
+        getMecz().clear();
+        getKibic().clear();
+    }
+
+    @Override
     public void clear(){
         setMecz(null);
         setKibic(null);

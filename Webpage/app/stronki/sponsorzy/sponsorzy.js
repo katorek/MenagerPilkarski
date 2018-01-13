@@ -60,12 +60,12 @@ angular.module('myApp.sponsorzy', ['ngRoute'])
             $scope.druzyny = $filter('orderBy')(druzynyLet, 'id');
         }));
 
-        $scope.getDruzyna = function (druzyna) {
-            if (isNumber(druzyna)) {
-                druzyna = $scope.druzyny[druzyna - 1];
-            }
-            return druzyna.nazwa;
-        };
+        // $scope.getDruzyna = function (druzyna) {
+        //     if (isNumber(druzyna)) {
+        //         druzyna = $scope.druzyny[druzyna - 1];
+        //     }
+        //     return druzyna.nazwa;
+        // };
 
 
         const empty = function () {

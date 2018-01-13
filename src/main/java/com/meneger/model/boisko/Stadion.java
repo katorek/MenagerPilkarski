@@ -2,6 +2,7 @@ package com.meneger.model.boisko;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.meneger.model.Template;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,17 +10,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "STADIONY")
 @JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
         property = "id")
-public class Stadion {
+public class Stadion implements Template{
     private Integer id;
     private Boisko boisko;
     private boolean chroniPrzedDeszczem;
 
     @Id
-    @GenericGenerator(name = "generator", strategy = "foreign",
-            parameters = @org.hibernate.annotations.Parameter(name = "property", value = "boisko"))
-    @GeneratedValue(generator = "generator")
+    @GeneratedValue
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -38,7 +37,7 @@ public class Stadion {
         this.chroniPrzedDeszczem = chroniPrzedDeszczem;
     }
 
-    @OneToOne @JoinColumn(name = "boisko")
+    @OneToOne(cascade = CascadeType.ALL) @JoinColumn(name = "boisko")
     public Boisko getBoisko() {
         return boisko;
     }
@@ -47,5 +46,22 @@ public class Stadion {
         this.boisko = boisko;
     }
 
+    @Override
+    public String toString() {
+        return "Stadion{" +
+                "id=" + id +
+                ", boisko=(" + boisko.getNazwa()+"id: " + boisko.getId()+
+                "), chroniPrzedDeszczem=" + chroniPrzedDeszczem +
+                '}';
+    }
 
+    @Override
+    public void prepare() {
+        getBoisko().clear();
+    }
+
+    @Override
+    public void clear() {
+//        setBoisko(null);
+    }
 }

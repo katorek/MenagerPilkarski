@@ -1,16 +1,19 @@
 package com.meneger.controllers;
 
-import com.meneger.model.DefModel;
-import com.meneger.repositories.OrlikRepository;
+import com.meneger.model.Template;
 import com.meneger.repositories.base.BaseRepository;
-import org.aspectj.apache.bcel.util.Repository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.ResponseErrorHandler;
 
+import java.sql.SQLException;
 import java.util.List;
 
-public abstract class AbstractRestController<T, S extends BaseRepository<T, Integer>> {
+public abstract class AbstractRestController<T extends Template, S extends BaseRepository<T, Integer>> {
 
     public static final String HAL_JSON = "application/hal+json;charset=UTF-8";
     public static final String JSON = "application/json;charset=UTF-8";
@@ -21,16 +24,32 @@ public abstract class AbstractRestController<T, S extends BaseRepository<T, Inte
         this.repository = repository;
     }
 
-    public abstract ResponseEntity<List<T>> getList();
-//    public abstract ResponseEntity delete(Integer id);
-//    public abstract ResponseEntity update(Integer id, T t);
-//    public abstract ResponseEntity add(T t);
+    protected AbstractRestController() {
+    }
+
+
+//    public abstract ResponseEntity<List<T>> getList();
+
+    @GetMapping
+    public ResponseEntity getList(){
+        try{
+            List<T> all = repository.findAll();
+            all.forEach(Template::prepare);
+            return ResponseEntity.ok(all);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.unprocessableEntity().build();
+        }
+    }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity getOne(@PathVariable Integer id){
-        T t = getList().getBody().get(id-1);
-        if(t == null){
-            return ResponseEntity.notFound().build();
+        T t;
+        try{
+            t = repository.getOne(id);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.unprocessableEntity().build();
         }
         return ResponseEntity.ok(t);
     }
@@ -39,32 +58,50 @@ public abstract class AbstractRestController<T, S extends BaseRepository<T, Inte
     public ResponseEntity delete(@PathVariable Integer id) {
         try {
             repository.delete(id);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.unprocessableEntity().build();
         }
-        return ResponseEntity.ok().build();
     }
 
     @PostMapping
     public ResponseEntity add(@RequestBody T t) {
+        System.err.println("T: "+ t.getClass().getCanonicalName()+", "+t.toString());
         try {
             repository.save(t);
-        } catch (Exception e) {
-            return ResponseEntity.unprocessableEntity().build();
+            return ResponseEntity.ok().build();
+        }catch (DataIntegrityViolationException e){
+            System.err.println("DataIntegrityViolationException");
+            if(e.getRootCause().getMessage().contains("Duplicate")){
+                return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            }
+            return new ResponseEntity<>(e.getRootCause().getLocalizedMessage(), HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok().build();
+        catch (ConstraintViolationException e){
+            System.err.println("ConstraintViolationException");
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        catch (Exception e) {
+            System.err.println("Exception");
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//            return ResponseEntity.unprocessableEntity().build();
+        }
     }
 
     @PutMapping(path = "/{id}")
     public ResponseEntity update(@PathVariable Integer id,
                                  @RequestBody T t) {
+        System.err.println("Update id:"+id+", T: "+ t.getClass().getCanonicalName()+", "+t.toString());
         if (!repository.exists(id))
             return ResponseEntity.notFound().build();
         try {
             repository.save(t);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.unprocessableEntity().build();
         }
-        return ResponseEntity.ok().build();
     }
 }

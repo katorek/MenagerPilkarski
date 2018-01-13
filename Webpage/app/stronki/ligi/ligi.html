@@ -1,0 +1,19 @@
+<h1>Ligi</h1>
+<div>
+    <form novalidate class="simple-form">
+        <p>Dodawanie nowej ligi</p><br/>
+        <input type="text" ng-model="vm.entry.nazwa" placeholder="Nazwa"/><br/>
+        <input type="submit" ng-click="vm.add(vm.entry)" value="Dodaj"/>
+    </form>
+</div>
+<br/>
+<div ng-show="vm.showEdit">
+    <form novalidate class="simple-form">
+        <p>Edytowanie ligi</p><br/>
+        <label>Nazwa: <input type="text" ng-model="vm.edited.nazwa"/></label><br/>
+        <input type="submit" ng-click="vm.update(vm.edited)" value="Zaktualizuj"/> <a ng-click="vm.showEdit=false">&#10006;</a>
+    </form>
+</div>
+<br/>
+<br/>
+<div ui-grid="vm.grid" ui-grid-edit class="grid"></div>

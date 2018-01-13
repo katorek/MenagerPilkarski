@@ -3,6 +3,7 @@ package com.meneger.model.boisko;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.meneger.model.Template;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -11,17 +12,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ORLIKI")
 @JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
         property = "id")
 @JsonSerialize
-public class Orlik{
+public class Orlik implements Template{
     private Integer id;
     private Boisko boisko;
 
     @Id
-    @GenericGenerator(name = "generator", strategy = "foreign",
-            parameters = @Parameter(name = "property", value = "boisko"))
-    @GeneratedValue(generator = "generator")
+    @GeneratedValue
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -31,12 +30,30 @@ public class Orlik{
         this.id = id;
     }
 
-    @OneToOne @JoinColumn(name = "boisko")
+    @OneToOne(cascade = CascadeType.ALL) @JoinColumn(name = "boisko")
     public Boisko getBoisko() {
         return boisko;
     }
 
     public void setBoisko(Boisko boisko) {
         this.boisko = boisko;
+    }
+
+    @Override
+    public String toString() {
+        return "Orlik{" +
+                "id=" + id +
+                ", boisko=" + boisko +
+                '}';
+    }
+
+    @Override
+    public void prepare() {
+        getBoisko().clear();
+    }
+
+    @Override
+    public void clear() {
+//        setBoisko(null);
     }
 }

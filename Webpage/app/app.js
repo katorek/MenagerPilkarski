@@ -3,20 +3,25 @@
 const url = 'http://localhost:8080/';
 
 const editTemplate = {
+    hideHeader: false,
     name: 'edit',
-    displayName: 'Edycja',
+    displayName: '',
     enableSorting: false,
     enableFiltering: false,
     enableHiding: false,
+    width:'8%',
     cellTemplate: '<button id="editBtn" type="button" class="btn-small" ng-click="grid.appScope.edit(row.entity)" >Edytuj</button> '
 };
 
 const delTemplate = {
+
+    hideHeader: true,
     name: 'delete',
-    displayName: 'Usuwanie',
+    displayName: '',
     enableSorting: false,
     enableFiltering: false,
     enableHiding: false,
+    width:'8%',
     cellTemplate: '<button id="deleteBtn" type="button" class="btn-small" ng-click="grid.appScope.delete(row.entity)" >Usun</button> '
 };
 
@@ -26,11 +31,38 @@ const addF = function (entry, Factory, reload) {
     entry = copyOf(entry);
     Factory.save(angular.toJson(entry), function () {
         reload();
-    }, function (r) {
-        alert(r);
+    }, function (response) {
+
+        if(response.status===409){
+            // alert('Duplikat: \''+response.config.data+'\'');
+            alert('Zduplikowana wartość !\nSpróbuj ponownie !')//: \''+response.config.data+'\'');
+        }
+        // alert(response);
+        console.log(response);
+        // handleError(response);
+        // alert(response.toString());
     });
 
 };
+
+function handleError(response) {
+    console.log('handlEerror');
+    console.log(typeof(response));
+    alert(response);
+    // console.log(response);
+    // let array = response.split(" ");
+    // console.log('SplitArray');
+    // console.log(array);
+    // let newResp = '';
+    // if(response.contains('Duplicate')){
+    //
+    // }
+    alert(response);
+}
+
+function doNothing() {
+
+}
 
 const deleteF = function (entry, Factory, reload) {
     Factory.delete(entry, function () {
@@ -70,6 +102,9 @@ angular.module('myApp', [
     'myApp.sponsorzy',
     'myApp.orliki',
     'myApp.stadiony',
+    'myApp.bilety',
+    'myApp.mecze',
+    'myApp.ligi',
     'myApp.version'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');

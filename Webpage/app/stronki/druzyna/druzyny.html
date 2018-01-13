@@ -1,7 +1,14 @@
+<h1>Druzyny</h1>
 <div>
     <form novalidate class="simple-form">
         <p>Dodawanie nowej druzyny</p><br/>
         <input type="text" ng-model="entry.nazwa" placeholder="Nazwa"/><br/>
+
+        <label>Liga:
+            <select ng-model="entry.liga">
+                <option ng-repeat="option in ligi" value="{{option.id}}">{{option.nazwa}}</option>
+            </select>
+        </label><br/>
         <input type="submit" ng-click="add(entry)" value="Dodaj"/>
     </form>
 </div>
@@ -10,6 +17,9 @@
 <div ng-show="showEdit">
     <form novalidate class="simple-form">
         <label>Nazwa: <input type="text" ng-model="edited.nazwa"></label>
+        <label>Liga:
+            <select ng-options="item.nazwa for item in ligi" ng-model="ligi.selected"></select>
+        </label><br/>
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
     </form>
 </div>

@@ -5,10 +5,15 @@ angular.module('myApp.welcome', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/welcome', {
             templateUrl: 'stronki/welcome/welcome.html',
-            controller: 'WelcomeCtrl'
+            controller: 'WelcomeCtrl',
+            controllerAs: 'vm'
         });
     }])
 
-    .controller('WelcomeCtrl', function () {
+    .controller('WelcomeCtrl', Welcome);
 
-    });
+function Welcome() {
+    const vm = this;
+    vm.title = 'Hello World !';
+    vm.title = 'Hello World ! !';
+}

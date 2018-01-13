@@ -2,6 +2,7 @@ package com.meneger.model.druzyna;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.meneger.model.Template;
 import com.meneger.model.osoba.Pilkarz;
 
 import javax.persistence.*;
@@ -10,35 +11,16 @@ import java.util.Set;
 
 @Entity
 @Table(name = "DRUZYNY")
-//@JsonIdentityInfo(
-//        generator = ObjectIdGenerators.PropertyGenerator.class,
-//        property = "id")
-public class Druzyna {
+public class Druzyna implements Template{
     private static final int NAME_MAX_LENGTH = 30;
 
-    @Id
-    @NotNull
-    @Column(name = "ID")
     private Integer id;
-
-    @NotNull
-    @Column(name = "NAZWA", length = NAME_MAX_LENGTH, unique = true)
     private String nazwa;
-
-    @OneToMany(mappedBy = "druzyna", fetch = FetchType.LAZY)
+    private Liga liga;
     private Set<Pilkarz> pilkarze;
-
-    @OneToMany(mappedBy = "druzyna", fetch = FetchType.LAZY)
     private Set<Sponsor> sponsorzy;
 
-    public Set<Pilkarz> getPilkarze() {
-        return pilkarze;
-    }
-
-    public void setPilkarze(Set<Pilkarz> pilkarze) {
-        this.pilkarze = pilkarze;
-    }
-
+    @Id @NotNull @Column(name = "ID")
     public Integer getId() {
         return id;
     }
@@ -47,6 +29,7 @@ public class Druzyna {
         this.id = id;
     }
 
+    @NotNull @Column(name = "NAZWA", length = NAME_MAX_LENGTH, unique = true)
     public String getNazwa() {
         return nazwa;
     }
@@ -55,6 +38,25 @@ public class Druzyna {
         this.nazwa = nazwa;
     }
 
+    @ManyToOne @JoinColumn(name = "LIGA_ID")
+    public Liga getLiga() {
+        return liga;
+    }
+
+    public void setLiga(Liga liga) {
+        this.liga = liga;
+    }
+
+    @OneToMany(mappedBy = "druzyna", fetch = FetchType.LAZY)
+    public Set<Pilkarz> getPilkarze() {
+        return pilkarze;
+    }
+
+    public void setPilkarze(Set<Pilkarz> pilkarze) {
+        this.pilkarze = pilkarze;
+    }
+
+    @OneToMany(mappedBy = "druzyna", fetch = FetchType.LAZY)
     public Set<Sponsor> getSponsorzy() {
         return sponsorzy;
     }
@@ -68,11 +70,23 @@ public class Druzyna {
         return "Druzyna{" +
                 "id=" + id +
                 ", nazwa='" + nazwa + '\'' +
+                ", liga=" + liga +
+                ", pilkarze=" + pilkarze +
+                ", sponsorzy=" + sponsorzy +
                 '}';
     }
 
+    @Override
+    public void prepare() {
+        getPilkarze().forEach(Pilkarz::clear);
+        getSponsorzy().forEach(Sponsor::clear);
+        if(getLiga()!=null)getLiga().clear();
+    }
+
+    @Override
     public void clear() {
         setSponsorzy(null);
         setPilkarze(null);
+        setLiga(null);
     }
 }

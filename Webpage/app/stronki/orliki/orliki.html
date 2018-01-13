@@ -1,0 +1,22 @@
+<h1>Orliki</h1>
+<div>
+    <form novalidate class="simple-form">
+        <p>Dodawanie nowego orlika</p><br/>
+        <input type="text" ng-model="entry.boisko.nazwa" placeholder="Nazwa"/><br/>
+        <input type="text" ng-model="entry.boisko.miejscowosc" placeholder="Miejscowosc"/><br/>
+        <input type="number" ng-model="entry.boisko.iloscMiejsc" placeholder="Ilosc miejsc"/><br/>
+
+        <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+    </form>
+</div><br/>
+<div ng-show="showEdit">
+    <form novalidate class="simple-form">
+        <p>Edytowanie orlika</p><br/>
+        <label>Nazwa: <input type="text" ng-model="edited.boisko.nazwa"/></label><br/>
+        <label>Miejscowosc: <input type="text" ng-model="edited.boisko.miejscowosc"/></label><br/>
+        <label>Ilosc miejsc: <input type="number" ng-model="edited.boisko.iloscMiejsc"/></label><br/>
+
+        <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+    </form>
+</div><br/><br/>
+<div ui-grid="grid" ui-grid-edit class="grid"></div>
