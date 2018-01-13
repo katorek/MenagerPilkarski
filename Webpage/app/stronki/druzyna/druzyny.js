@@ -11,7 +11,11 @@ angular.module('myApp.druzyny', ['ngRoute'])
 
     .service('DruzynaS',function ($resource) {
         this.Factory = $resource(url + 'druzyny/:id', {id: '@id'}, {
-            'update': {method: 'PUT'}
+            'update': {method: 'PUT'},
+            'wygraneMecze': {
+                method: 'GET',
+                url: '/wygrane'
+            }
         });
         this.columns = [
             {
@@ -21,8 +25,9 @@ angular.module('myApp.druzyny', ['ngRoute'])
             },
             {
                 name: 'nazwa',
-                enableCellEdit: true,
-                enableFiltering: true
+            },
+            {
+                field:'wygranychMeczy'
             },
             {
                 field:'liga.nazwa',

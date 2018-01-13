@@ -1,7 +1,5 @@
 package com.meneger.model.druzyna;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.meneger.model.Template;
 import com.meneger.model.osoba.Pilkarz;
 
@@ -19,6 +17,7 @@ public class Druzyna implements Template{
     private Liga liga;
     private Set<Pilkarz> pilkarze;
     private Set<Sponsor> sponsorzy;
+    private Integer wygranychMeczy;
 
     @Id @NotNull @Column(name = "ID")
     public Integer getId() {
@@ -65,6 +64,15 @@ public class Druzyna implements Template{
         this.sponsorzy = sponsorzy;
     }
 
+    @Transient
+    public Integer getWygranychMeczy() {
+        return wygranychMeczy;
+    }
+
+    public void setWygranychMeczy(Integer wygranychMeczy) {
+        this.wygranychMeczy = wygranychMeczy;
+    }
+
     @Override
     public String toString() {
         return "Druzyna{" +
@@ -88,5 +96,22 @@ public class Druzyna implements Template{
         setSponsorzy(null);
         setPilkarze(null);
         setLiga(null);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Druzyna druzyna = (Druzyna) o;
+
+        return id.equals(druzyna.id) && nazwa.equals(druzyna.nazwa);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + nazwa.hashCode();
+        return result;
     }
 }
