@@ -2,21 +2,23 @@
 <div>
     <form novalidate class="simple-form">
         <p>Dodawanie nowego orlika</p><br/>
-        <input type="text" ng-model="entry.boisko.nazwa" placeholder="Nazwa"/><br/>
-        <input type="text" ng-model="entry.boisko.miejscowosc" placeholder="Miejscowosc"/><br/>
-        <input type="number" ng-model="entry.boisko.iloscMiejsc" placeholder="Ilosc miejsc"/><br/>
+        <input ng-class="nazwaErr" type="text" ng-model="entry.boisko.nazwa" placeholder="Nazwa"/><br/>
+        <input ng-class="miejscowoscErr" type="text" ng-model="entry.boisko.miejscowosc" placeholder="Miejscowosc"/><br/>
+        <input ng-class="iloscMiejscErr" type="number" ng-model="entry.boisko.iloscMiejsc" placeholder="Ilosc miejsc"/><br/>
 
         <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+        <br/><br/><div class="errorMsg">{{error}}</div><br/>
     </form>
 </div><br/>
 <div ng-show="showEdit">
     <form novalidate class="simple-form">
         <p>Edytowanie orlika</p><br/>
-        <label>Nazwa: <input type="text" ng-model="edited.boisko.nazwa"/></label><br/>
-        <label>Miejscowosc: <input type="text" ng-model="edited.boisko.miejscowosc"/></label><br/>
-        <label>Ilosc miejsc: <input type="number" ng-model="edited.boisko.iloscMiejsc"/></label><br/>
+        <label>Nazwa: <input ng-class="nazwaErr2" type="text" ng-model="edited.boisko.nazwa"/></label><br/>
+        <label>Miejscowosc: <input ng-class="miejscowoscErr2" type="text" ng-model="edited.boisko.miejscowosc"/></label><br/>
+        <label>Ilosc miejsc: <input ng-class="iloscMiejscErr2" type="number" ng-model="edited.boisko.iloscMiejsc"/></label><br/>
 
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+        <br/><br/><div class="errorMsg">{{error2}}</div><br/>
     </form>
 </div><br/><br/>
 <div ui-grid="grid" ui-grid-edit class="grid"></div>

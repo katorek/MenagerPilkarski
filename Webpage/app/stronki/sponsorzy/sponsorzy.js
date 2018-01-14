@@ -91,6 +91,14 @@ angular.module('myApp.sponsorzy', ['ngRoute'])
 
         reload();
 
+        function init() {
+            $scope.nazwaErr = '';
+            $scope.rodzajErr = '';
+            $scope.druzynaErr = '';
+        }
+
+        init();
+
         $scope.grid = {
             enableFiltering: true,
             enableSorting: true,
@@ -101,12 +109,39 @@ angular.module('myApp.sponsorzy', ['ngRoute'])
         };
 
         $scope.add = function (row) {//musi
-            row.druzyna = $scope.druzyny[row.druzyna - 1];
-            addF(row, Factory, reload);
-            $scope.entry = empty();
+            if (validateForm(row, 0)) {
+                $scope.error = '';
+                row.druzyna = $scope.druzyny[row.druzyna - 1];
+                addF(row, Factory, reload);
+                $scope.entry = empty();
+            } else {
+                $scope.error = 'Niepoprawne dane';
+            }
         };
 
+        function validateForm(row, i) {
+            if (i === 0) {
+                $scope.nazwaErr = (row.nazwa.length < 1) ? 'error' : 'normal';
+                $scope.rodzajErr = (row.rodzaj.length < 1) ? 'error' : 'normal';
+                $scope.druzynaErr = (row.druzyna === null || row.druzyna === '') ? 'error' : 'normal';
+            } else {
+                $scope.nazwaErr2 = (row.nazwa.length < 1) ? 'error' : 'normal';
+                $scope.rodzajErr2 = (row.rodzaj.length < 1) ? 'error' : 'normal';
+                $scope.druzynaErr2 = (row.druzyna === null || row.druzyna === '') ? 'error' : 'normal';
+            }
+
+            return !(row.nazwa.length < 1 || row.rodzaj.length < 1 || row.druzyna === null || row.druzyna === '');
+        }
+
+        function resetErr() {
+            $scope.nazwaErr2 = '';
+            $scope.rodzajErr2 = '';
+            $scope.druzynaErr2 = '';
+            $scope.error2 = '';
+        }
+
         $scope.edit = function (row) {//musi
+            resetErr();
             $scope.showEdit = true;
             $scope.edited = copyOf(row);
             let id = 0;
@@ -123,8 +158,14 @@ angular.module('myApp.sponsorzy', ['ngRoute'])
         $scope.update = function (row) {//musi
             row.druzyna = $scope.druzyny.selected;
             row.druzyna.pilkarze = null;
-            updateF(row, Factory, reload);
-            $scope.showEdit = false;
-            $scope.edited = empty();
+
+            if(validateForm(row, 1)){
+                $scope.error2 = '';
+                updateF(row, Factory, reload);
+                $scope.edited = empty();
+                $scope.showEdit = false;
+            }else{
+                $scope.error2 = 'Niepoprawne dane';
+            }
         };
     });

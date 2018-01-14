@@ -33,29 +33,37 @@ DETERMINISTIC
 
 DELIMITER ;
 
-# DELIMITER $$
+DELIMITER $$
 
-# DROP PROCEDURE IF EXISTS wygrana2;
+CREATE FUNCTION WygranychMeczyPrzezDruzyne(p_druzynaId INTEGER)
+  RETURNS INTEGER
+DETERMINISTIC
+  BEGIN
+    DECLARE jakoGospodarz INTEGER;
+    DECLARE jakoPrzyjezdni INTEGER;
+    DECLARE suma INTEGER;
 
-# CREATE PROCEDURE wygrana2 (IN W_IN INT UNSIGNED)
-#   BEGIN
-#     DECLARE W_CUS INT UNSIGNED DEFAULT 0;
-#     DECLARE W_TOT DOUBLE DEFAULT 0; -- NOT USED?
-#     -- GET CUS_CODE
-#     SELECT CUS_CODE INTO W_CUS
-#     FROM INVOICE
-#     WHERE INVOICE.INV_NUMBER = W_IN;
-#
-#     -- UPDATES CUSTOMER IF W_CUS > 0
-#     IF W_CUS > 0 THEN
-#       UPDATE CUSTOMER
-#       SET CUS_BALANCE = CUS_BALANCE +
-#                         (SELECT INV_TOTAL FROM INVOICE WHERE INV_NUMBER = W_IN)
-#       WHERE CUS_CODE = W_CUS;
-#     END IF;
-#   END $$
-#
-# DELIMITER ;
+    SET jakoGospodarz = 0;
+    SET jakoPrzyjezdni = 0;
+
+    SELECT sum(Wygrana(wynik_meczu, 0))
+    INTO jakoGospodarz
+    FROM mecze
+    WHERE gospodarz_id = p_druzynaId;
+    SELECT sum(Wygrana(wynik_meczu, 1))
+    INTO jakoPrzyjezdni
+    FROM mecze
+    WHERE przyjezdni_id = p_druzynaId;
+
+    SET jakoGospodarz = IFNULL(jakoGospodarz, 0);
+    SET jakoPrzyjezdni = IFNULL(jakoPrzyjezdni, 0);
+
+    SET suma = jakoGospodarz + jakoPrzyjezdni;
+
+    RETURN (suma);
+  END $$
+
+DELIMITER ;
 
 
 # Tests

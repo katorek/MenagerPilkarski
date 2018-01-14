@@ -4,31 +4,38 @@
         <h3>Dodawanie nowego meczu</h3><br/>
 
         <label>Boisko:
-            <select ng-model="entry.boisko">
+            <select ng-class="boiskoErr" ng-model="entry.boisko">
                 <option ng-repeat="option in boiska" value="{{option.id}}">{{option.nazwa}}</option>
             </select>
         </label><br/>
 
         <label>
-            Cena biletu: <input type="number" ng-model="entry.cenaBiletu" placeholder="Cena biletu"/><br/>
+            Cena biletu: <input ng-class="cenaBiletuErr" type="number" ng-model="entry.cenaBiletu" placeholder="Cena biletu"/> <b><code>>0</code></b><br/>
         </label>
+
         <input type="date" ng-model="entry.data" placeholder="Data"/><br/>
 
         <label>Gospodarz:
-            <select ng-model="entry.gospodarz">
+            <select ng-class="gospodarzErr" ng-model="entry.gospodarz">
                 <option ng-repeat="option in druzyny" value="{{option.id}}">{{option.nazwa}}</option>
             </select>
         </label><br/>
 
-        <input type="text" ng-model="entry.wynikMeczu" placeholder="Wynik meczu"/><br/>
+        <label>
+            Wynik meczu, format: <b><code>0:0</code></b>
+            <input ng-class="wynikMeczuErr" type="text" ng-model="entry.wynikMeczu" placeholder="Wynik meczu"/><br/>
+        </label>
+
 
         <label>Przyjezdni:
-            <select ng-model="entry.przyjezdni">
+            <select ng-class="przyjezdniErr" ng-model="entry.przyjezdni">
                 <option ng-repeat="option in druzyny" value="{{option.id}}">{{option.nazwa}}</option>
             </select>
         </label><br/>
 
         <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+        <br/><br/><div class="errorMsg">{{error1}}</div><br/>
+        <div class="errorMsg">{{error}}</div><br/>
     </form>
 </div>
 <br/>
@@ -37,24 +44,26 @@
         <h3>Edycja meczu</h3>
         <label>
             Boisko:
-            <select ng-options="item.nazwa for item in boiska" ng-model="boiska.selected"></select>
+            <select ng-class="boiskoErr2" ng-options="item.nazwa for item in boiska" ng-model="boiska.selected"></select>
         </label><br/>
 
-        <label>Cena biletu: <input type="number" ng-model="edited.cenaBiletu"/></label><br/>
+        <label>Cena biletu: <input ng-class="cenaBiletuErr2" type="number" ng-model="edited.cenaBiletu"/></label><br/>
         <label>Data meczu: <input type="date" ng-model="edited.data"/></label><br/>
 
         <label>
             Gospodarze:
-            <select ng-options="item.nazwa for item in druzyny" ng-model="druzyny.gospodarz"></select>
+            <select ng-class="gospodarzErr2" ng-options="item.nazwa for item in druzyny" ng-model="druzyny.gospodarz"></select>
         </label><br/>
 
-        <label>Wynik meczu: <input type="text" ng-model="edited.wynikMeczu"/></label><br/>
+        <label>Wynik meczu: <input ng-class="wynikMeczuErr2" type="text" ng-model="edited.wynikMeczu"/></label><br/>
 
         <label>
             Przyjezdni:
-            <select ng-options="item.nazwa for item in druzyny" ng-model="druzyny.przyjezdni"></select>
+            <select ng-class="przyjezdniErr2" ng-options="item.nazwa for item in druzyny" ng-model="druzyny.przyjezdni"></select>
         </label><br/>
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+        <br/><br/><div class="errorMsg">{{error3}}</div><br/>
+        <div class="errorMsg">{{error2}}</div><br/>
     </form>
 </div>
 <br/>

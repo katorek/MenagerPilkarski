@@ -120,6 +120,16 @@ angular.module('myApp.pilkarze', ['ngRoute'])
 
         reload();
 
+        function init(){
+            $scope.imieErr = '';
+            $scope.nazwiskoErr = '';
+            $scope.peselErr = '';
+            $scope.numerErr = '';
+            $scope.pozycjaErr = '';
+            $scope.druzynaErr = '';
+        }
+        init();
+
         $scope.grid = { //musi
             enableFiltering: true,
             enableSorting: true,
@@ -146,13 +156,52 @@ angular.module('myApp.pilkarze', ['ngRoute'])
 
         //CRUD
         $scope.add = function (row) {//musi
-            row.druzyna = $scope.druzyny[row.druzyna - 1];
-            addF(row, Factory, reload);
-            $scope.entry = empty();
-            $scope.entry.pozycja = $scope.pozycje[0];
+            if(validateForm(row, 0)){
+                $scope.error = "";
+                row.druzyna = $scope.druzyny[row.druzyna - 1];
+                addF(row, Factory, reload);
+                $scope.entry = empty();
+                $scope.entry.pozycja = $scope.pozycje[0];
+            }else{
+                $scope.error = "Niepoprawne dane";
+            }
         };
 
+        function validateForm(row, i) {
+            console.log(row);
+            if(i===0){
+
+                $scope.imieErr = (row.imie.length<1)?'error':'normal';
+                $scope.nazwiskoErr = (row.nazwisko.length<1)?'error':'normal';
+                $scope.peselErr = !isPeselValid(row.pesel)?'error':'normal';
+                $scope.numerErr = (row.numer==='')?'error':'normal';
+                $scope.pozycjaErr = (row.pozycja === undefined)?'error':'normal';
+                $scope.druzynaErr = (row.druzyna==='')?'error':'normal';
+
+            }else{
+                $scope.imieErr2 = (row.imie.length<1)?'error':'normal';
+                $scope.nazwiskoErr2 = (row.nazwisko.length<1)?'error':'normal';
+                $scope.peselErr2 = (!isPeselValid(row.pesel) || row.pesel===null)?'error':'normal';
+                $scope.numerErr2 = (row.numer==='')?'error':'normal';
+                $scope.pozycjaErr2 = (row.pozycja === undefined)?'error':'normal';
+                $scope.druzynaErr2 = (row.druzyna==='')?'error':'normal';
+            }
+
+            return !(row.imie.length < 1 || row.nazwisko.length < 1 || row.pesel === '' || !isPeselValid(row.pesel) || row.numer === '' || row.pozycja === undefined || row.druzyna==='');
+        }
+
+        function resetErr() {
+            $scope.imieErr2 = '';
+            $scope.nazwiskoErr2 = '';
+            $scope.peselErr2 = '';
+            $scope.numerErr2 = '';
+            $scope.pozycjaErr2 = '';
+            $scope.druzynaErr2 = '';
+            $scope.error2 = '';
+        }
+
         $scope.edit = function (row) {//musi
+            resetErr();
             $scope.showEdit = true;
             $scope.edited = copyOf(row);
             let id = 0;
@@ -169,10 +218,16 @@ angular.module('myApp.pilkarze', ['ngRoute'])
         $scope.update = function (row) {//musi
             row.druzyna = $scope.druzyny.selected;
             row.druzyna.pilkarze = null;
-            updateF(row, Factory, reload);
 
-            $scope.showEdit = false;
-            $scope.edited = empty();
+            if(validateForm(row, 1)){
+                $scope.error2 = '';
+                updateF(row, Factory, reload);
+
+                $scope.showEdit = false;
+                $scope.edited = empty();
+            }else{
+                $scope.error2 = 'Niepoprawne dane';
+            }
         };
 
         $scope.entry.pozycja = $scope.pozycje[0];

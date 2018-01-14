@@ -71,10 +71,9 @@ angular.module('myApp.bilety', ['ngRoute'])
         }];
 
         let kibiceTemp = (KibicS.Factory.query(function () {
-
-
             $scope.kibice = $filter('orderBy')(kibiceTemp, 'id');
         }));
+
         let meczeTemp = (MeczeS.Factory.query(function () {
             $scope.mecze = $filter('orderBy')(meczeTemp, 'id');
         }));
@@ -82,10 +81,6 @@ angular.module('myApp.bilety', ['ngRoute'])
         const empty = function () {
             return {id: 0, mecz: 0, znizka: 0, kibic: 0};
         };
-
-        function isNumber(value) {
-            return typeof value === 'number';
-        }
 
         $scope.getKibic = function (kibic) {
             return kibic.imie + ' ' + kibic.nazwisko;
@@ -100,13 +95,14 @@ angular.module('myApp.bilety', ['ngRoute'])
         };
 
         $scope.getMecz = function (meczId) {
-            if ($scope.mecze.length <= 1) return '';
+            if ($scope.mecze.length <= 0) return '';
             let mecz;
             for (let i = 0; i < $scope.mecze.length; ++i) {
                 if ($scope.mecze[i].id === meczId) mecz = $scope.mecze[i];
             }
             // let d;
             // if( angular.isDate(mecz.data)) d = mecz.data;
+            // console.log('mecz');
             // console.log(mecz);
             const d = $filter('date')(mecz.data, "dd-MM-yyyy");
             const g = mecz.gospodarz.nazwa;
@@ -127,6 +123,17 @@ angular.module('myApp.bilety', ['ngRoute'])
 
         reload();
 
+        function init() {
+            $scope.meczErr = '';
+            $scope.kibicErr = '';
+            $scope.error = '';
+            $scope.meczErr2 = '';
+            $scope.kibicErr2 = '';
+            $scope.error2 = '';
+        }
+
+        init();
+
         $scope.grid = {
             enableFiltering: true,
             enableSorting: true,
@@ -136,16 +143,36 @@ angular.module('myApp.bilety', ['ngRoute'])
             data: data
         };
 
-        $scope.add = function (row) {//todo
-            console.log(row);
-            row.mecz = $scope.mecze[row.mecz - 1];
-            row.kibic = $scope.kibice[row.kibic - 1];
-            // row.druzyna = $scope.druzyny[row.druzyna - 1];
-            addF(row, Factory, reload);
-            $scope.entry = empty();
+        $scope.add = function (row) {
+            if (validateForm(row,0)) {
+                $scope.error = '';
+                // console.log(row);
+                row.mecz = $scope.mecze[row.mecz - 1];
+                row.kibic = $scope.kibice[row.kibic - 1];
+                // row.druzyna = $scope.druzyny[row.druzyna - 1];
+                addF(row, Factory, reload);
+                $scope.entry = empty();
+
+            } else {
+                $scope.error = 'Niepoprawne dane';
+            }
         };
 
-        $scope.edit = function (row) {//todo
+        function validateForm(row, i) {
+            console.log(row);
+            if(i===0){
+                $scope.meczErr = (row.mecz === 0) ? 'error' : 'normal';
+                $scope.kibicErr = (row.kibic === 0) ? 'error' : 'normal';
+                return !(row.mecz === 0 || row.kibic === 0);
+
+            }else{
+                $scope.meczErr2 = (row.mecz === 0) ? 'error' : 'normal';
+                $scope.kibicErr2 = (row.kibic === 0) ? 'error' : 'normal';
+                return !(row.mecz === 0 || row.kibic === 0);
+            }
+        }
+
+        $scope.edit = function (row) {
             $scope.showEdit = true;
             $scope.edited = copyOf(row);
 
@@ -166,12 +193,17 @@ angular.module('myApp.bilety', ['ngRoute'])
             deleteF(row, Factory, reload);
         };
 
-        $scope.update = function (row) {//todo
+        $scope.update = function (row) {
             row.mecz = $scope.mecze.selected;
             row.kibic = $scope.kibice.selected;
-            updateF(row, Factory, reload);
-            $scope.showEdit = false;
-            $scope.edited = empty();
+            if(validateForm(row,1)){
+                $scope.error2 = '';
+                updateF(row, Factory, reload);
+                $scope.showEdit = false;
+                $scope.edited = empty();
+            }else{
+                $scope.error2 = 'Niepoprawne dane';
+            }
         };
 
     });

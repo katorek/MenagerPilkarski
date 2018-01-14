@@ -3,15 +3,16 @@
     <form novalidate class="simple-form">
         <p>Dodawanie nowego kibica</p><br/>
         <!--<label>Id: {{maxId()}}</label><br/>-->
-        <input type="text" ng-model="entry.imie" placeholder="Imię"/><br/>
-        <input type="text" ng-model="entry.nazwisko" placeholder="Nazwisko"/><br/>
-        <input type="text" ng-model="entry.pesel" placeholder="Pesel"/><br/>
+        <input ng-class="imieErr" type="text" ng-model="entry.imie" placeholder="Imię"/><br/>
+        <input ng-class="nazwiskoErr" type="text" ng-model="entry.nazwisko" placeholder="Nazwisko"/><br/>
+        <input ng-class="peselErr" type="text" ng-model="entry.pesel" placeholder="Pesel"/><br/>
         <label>
             Znizka <input type="checkbox" ng-model="entry.znizka" placeholder="Znizka"/>
 
         </label><br/>
 
         <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+        <br/><br/><div class="errorMsg">{{error}}</div><br/>
     </form>
 </div>
 <br/>
@@ -19,12 +20,13 @@
     <form novalidate class="simple-form">
         <p>Edytowanie zawodnika</p><br/>
         <!--<label>Id: {{maxId()}}</label><br/>-->
-        <label>Imie: <input type="text" ng-model="edited.imie" placeholder=""/></label><br/>
-        <label>Nazwisko: <input type="text" ng-model="edited.nazwisko"/></label><br/>
-        <label>Pesel: <input type="text" ng-model="edited.pesel"/></label><br/>
+        <label>Imie: <input ng-class="imieErr2" type="text" ng-model="edited.imie" placeholder=""/></label><br/>
+        <label>Nazwisko: <input ng-class="nazwiskoErr2" type="text" ng-model="edited.nazwisko"/></label><br/>
+        <label>Pesel: <input ng-class="peselErr2" type="text" ng-model="edited.pesel"/></label><br/>
         <label>Znizka <input type="checkbox" ng-model="edited.znizka"/></label>
 
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+        <br/><br/><div class="errorMsg">{{error2}}</div><br/>
     </form>
 </div>
 <br/>

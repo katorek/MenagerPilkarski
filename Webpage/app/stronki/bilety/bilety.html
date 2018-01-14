@@ -4,13 +4,13 @@
         <p>Dodawanie nowego biletu</p><br/>
 
         <label>Mecz:
-            <select ng-model="entry.mecz">
+            <select ng-class="meczErr" ng-model="entry.mecz">
                 <option ng-repeat="option in mecze" value="{{option.id}}">{{getMecz(option.id)}}</option>
             </select>
         </label><br/>
 
         <label>Kibic:
-            <select ng-model="entry.kibic">
+            <select ng-class="kibicErr" ng-model="entry.kibic">
                 <option ng-repeat="option in kibice" value="{{option.id}}">{{option.imie+' '+option.nazwisko}}</option>
             </select>
         </label><br/>
@@ -18,6 +18,7 @@
         <label>Zniżka: <input type="number" ng-model="entry.znizka"/><br/></label>
 
         <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+        <br/><br/><div class="errorMsg">{{error}}</div><br/>
     </form>
 </div>
 <br/>
@@ -27,22 +28,17 @@
         <p>Edycja biletu</p><br/>
 
         <label>Mecz:
-            <select ng-options="getMecz(item.id) for item in mecze" ng-model="mecze.selected"></select>
+            <select ng-class="meczErr2" ng-options="getMecz(item.id) for item in mecze" ng-model="mecze.selected"></select>
         </label>
 
         <label>Zniżka: <input type="number" ng-model="edited.znizka"/><br/></label>
 
         <label>Kibic:
-            <select ng-options="getKibic(item) for item in kibice" ng-model="kibice.selected"></select>
+            <select ng-class="kibicErr2" ng-options="getKibic(item) for item in kibice" ng-model="kibice.selected"></select>
         </label>
 
-        <!--<label>-->
-            <!--Druzyna:-->
-            <!--<select ng-options="item.nazwa for item in druzyny" ng-model="druzyny.selected"></select>-->
-        <!--</label><br/>-->
-
-
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+        <br/><br/><div class="errorMsg">{{error2}}</div><br/>
     </form>
 
 </div>

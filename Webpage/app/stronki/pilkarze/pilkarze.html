@@ -2,24 +2,25 @@
 <div>
     <form novalidate class="simple-form">
         <p>Dodawanie nowego zawodnika</p><br/>
-        <input type="text" ng-model="entry.imie" placeholder="Imię"/><br/>
-        <input type="text" ng-model="entry.nazwisko" placeholder="Nazwisko"/><br/>
-        <input type="text" ng-model="entry.pesel" placeholder="Pesel"/><br/>
-        <input type="text" ng-model="entry.numer" placeholder="Numer"/><br/>
+        <input ng-class="imieErr" type="text" ng-model="entry.imie" placeholder="Imię"/><br/>
+        <input ng-class="nazwiskoErr" type="text" ng-model="entry.nazwisko" placeholder="Nazwisko"/><br/>
+        <input ng-class="peselErr" type="text" ng-model="entry.pesel" placeholder="Pesel"/><br/>
+        <input ng-class="numerErr" type="text" ng-model="entry.numer" placeholder="Numer"/><br/>
 
         <label>Pozycja:
-            <select ng-model="entry.pozycja">
+            <select ng-class="pozycjaErr" ng-model="entry.pozycja">
                 <option ng-repeat="option in pozycje.lista" value="{{option.id}}">{{option.nazwa}}</option>
             </select>
         </label><br/>
 
         <label>Druzyna:
-            <select ng-model="entry.druzyna">
+            <select ng-class="druzynaErr" ng-model="entry.druzyna">
                 <option ng-repeat="option in druzyny" value="{{option.id}}">{{option.nazwa}}</option>
             </select>
         </label><br/>
 
         <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+        <br/><br/><div class="errorMsg">{{error}}</div><br/>
     </form>
 </div>
 <br/>
@@ -28,24 +29,25 @@
     <form novalidate class="simple-form">
         <p>Edytowanie zawodnika</p><br/>
         <!--<label>Id: {{maxId()}}</label><br/>-->
-        <label>Imie: <input type="text" ng-model="edited.imie" placeholder=""/></label><br/>
-        <label>Nazwisko: <input type="text" ng-model="edited.nazwisko"/></label><br/>
-        <label>Pesel: <input type="text" ng-model="edited.pesel"/></label><br/>
-        <label>Numer: <input type="number" ng-model="edited.numer"/></label><br/>
+        <label>Imie: <input ng-class="imieErr2" type="text" ng-model="edited.imie" placeholder=""/></label><br/>
+        <label>Nazwisko: <input ng-class="nazwiskoErr2" type="text" ng-model="edited.nazwisko"/></label><br/>
+        <label>Pesel: <input ng-class="peselErr2" type="text" ng-model="edited.pesel"/></label><br/>
+        <label>Numer: <input ng-class="numerErr2" type="number" ng-model="edited.numer"/></label><br/>
 
         <label>Pozycja:
-            <select ng-model="edited.pozycja">
+            <select ng-class="pozycjaErr2" ng-model="edited.pozycja">
                 <option ng-repeat="option in pozycje.lista" value="{{option.id}}">{{option.nazwa}}</option>
             </select>
         </label><br/>
 
         <label>
             Druzyna:
-            <select ng-options="item.nazwa for item in druzyny" ng-model="druzyny.selected"></select>
+            <select ng-class="druzynaErr2" ng-options="item.nazwa for item in druzyny" ng-model="druzyny.selected"></select>
         </label><br/>
 
 
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+        <br/><br/><div class="errorMsg">{{error2}}</div><br/>
     </form>
 
 </div>

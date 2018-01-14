@@ -79,17 +79,43 @@ angular.module('myApp.druzyny', ['ngRoute'])
             data: data
         };
 
+        $scope.ligaErr = "normal";
+        $scope.nazwaErr = "normal";
         //CRUD
         $scope.add = function (row) {//musi
-            row.id = 0;
-            console.log(row);
-            row.liga = $scope.ligi[row.liga-1];
-            console.log(row);
-            addF(row, Factory, reload);
-            $scope.entry = empty();
+            if(validateForm(row,0)){
+                $scope.error = "";
+                $scope.isError = "normal";
+                row.id = 0;
+                // console.log(row);
+                row.liga = $scope.ligi[row.liga-1];
+                // console.log(row);
+                addF(row, Factory, reload);
+                $scope.entry = empty();
+            }else{
+                $scope.error = "Niepoprawne dane";
+            }
         };
 
+        function validateForm(row,i) {
+            if(i===0){
+                $scope.nazwaErr = (row.nazwa.length<1)?'error':'normal';
+                $scope.ligaErr = !('liga' in row)?'error':'normal';
+            }else{
+                $scope.nazwaErr2 = (row.nazwa.length<1)?'error':'normal';
+                $scope.ligaErr2 = !('liga' in row)?'error':'normal';
+            }
+            return !(row.nazwa.length < 1 || !('liga' in row));
+        }
+
+        function resetErr() {
+            $scope.nazwaErr2 = 'normal';
+            $scope.ligaErr2 = 'normal';
+            $scope.error2 = '';
+        }
+
         $scope.edit = function (row) {//musi
+            resetErr();
             $scope.showEdit = true;
             $scope.edited = copyOf(row);
 
@@ -113,8 +139,13 @@ angular.module('myApp.druzyny', ['ngRoute'])
 
         $scope.update = function (row) {//musi
             row.liga = $scope.ligi.selected;
-            updateF(row, Factory, reload);
-            $scope.showEdit = false;
-            $scope.edited = empty();
+            if(validateForm(row,1)){
+                $scope.error2 = '';
+                updateF(row, Factory, reload);
+                $scope.showEdit = false;
+                $scope.edited = empty();
+            }else{
+                $scope.error2 = 'Niepoprawne dane';
+            }
         };
     });

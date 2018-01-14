@@ -20,7 +20,7 @@ angular.module('myApp.mecze', ['ngRoute'])
     }])
 
     .factory('BoiskaF', function ($resource) {
-        return $resource(url + 'boiska/:id', {id: '@_id'},{
+        return $resource(url + 'boiska/:id', {id: '@_id'}, {
             'update': {method: 'PUT'}
         });
     })
@@ -94,7 +94,15 @@ angular.module('myApp.mecze', ['ngRoute'])
         }));
 
         const empty = function () {
-            return {id: 0, boisko: {}, cenaBiletu: 0, wynikMeczu: '', gospodarz: '', przyjezdni: '', data: new Date()};
+            return {
+                id: 0,
+                boisko: {id: -1},
+                cenaBiletu: 0,
+                wynikMeczu: '',
+                gospodarz: '',
+                przyjezdni: '',
+                data: new Date()
+            };
         };
 
         $scope.showEdit = false;
@@ -114,6 +122,17 @@ angular.module('myApp.mecze', ['ngRoute'])
 
         reload();
 
+        function init() {
+            $scope.boiskoErr = '';
+            $scope.cenaBiletuErr = '';
+            $scope.gospodarzErr = '';
+            $scope.wynikMeczuErr = '';
+            $scope.przyjezdniErr = '';
+            $scope.error = '';
+        }
+
+        init();
+
         $scope.grid = {
             enableFiltering: true,
             enableSorting: true,
@@ -124,24 +143,79 @@ angular.module('myApp.mecze', ['ngRoute'])
         };
 
         $scope.add = function (row) {//musi
-            console.log(row);
-            console.log($scope.boiska[row.boisko-1]);
-            row.boisko = copyOf($scope.boiska[row.boisko-1]);
-            row.gospodarz = copyOf($scope.druzyny[row.gospodarz - 1]);
-            row.przyjezdni = copyOf($scope.druzyny[row.przyjezdni - 1]);
-            row.boisko.mecze = null;
+            if (validateForm(row, 0)) {
+                row.boisko = copyOf($scope.boiska[row.boisko - 1]);
+                row.gospodarz = copyOf($scope.druzyny[row.gospodarz - 1]);
+                row.przyjezdni = copyOf($scope.druzyny[row.przyjezdni - 1]);
 
-            row.boisko.stadion = null;
-            row.boisko.orlik = null;
+                row.boisko.mecze = null;
 
-            console.log(row);
+                row.boisko.stadion = null;
+                row.boisko.orlik = null;
 
-            // row.druzyna = $scope.druzyny[row.druzyna - 1];
-            addF(row, Factory, reload);
-            $scope.entry = empty();
+                // console.log(row);
+
+                // row.druzyna = $scope.druzyny[row.druzyna - 1];
+                addF(row, Factory, reload);
+                $scope.entry = empty();
+
+                $scope.error = '';
+            } else {
+                $scope.error = 'Niepoprawne dane';
+            }
         };
 
+        function validateForm(row, i) {
+            // console.log('validating...');
+            // console.log(row);
+            // console.log('validated');
+            if (i === 0) {
+
+                $scope.boiskoErr = (row.boisko.id === -1) ? 'error' : 'normal';
+                $scope.cenaBiletuErr = (row.cenaBiletu === 0) ? 'error' : 'normal';
+                $scope.gospodarzErr = (row.gospodarz === null) ? 'error' : 'normal';
+                $scope.wynikMeczuErr = (!isWynikValid(row.wynikMeczu)) ? 'error' : 'normal';
+                $scope.przyjezdniErr = (row.przyjezdni === null) ? 'error' : 'normal';
+
+                if (row.gospodarz === row.przyjezdni && !(row.gospodarz === null)) {
+                    $scope.gospodarzErr = 'error';
+                    $scope.przyjezdniErr = 'error';
+                    $scope.error1 = 'Druzyna nie moze grac przeciwko sobie! '
+                }
+            } else {
+
+                $scope.boiskoEr2r = (row.boisko.id === -1) ? 'error' : 'normal';
+                $scope.cenaBiletuErr2 = (row.cenaBiletu === 0) ? 'error' : 'normal';
+                $scope.gospodarzErr2 = (row.gospodarz === null) ? 'error' : 'normal';
+                $scope.wynikMeczuErr2 = (!isWynikValid(row.wynikMeczu)) ? 'error' : 'normal';
+                $scope.przyjezdniErr2 = (row.przyjezdni === null) ? 'error' : 'normal';
+
+                if (row.gospodarz === row.przyjezdni && !(row.gospodarz === null)) {
+                    $scope.gospodarzErr2 = 'error';
+                    $scope.przyjezdniErr2 = 'error';
+                    $scope.error3 = 'Druzyna nie moze grac przeciwko sobie! ';
+                }
+            }
+
+            return !(row.boisko.id === -1 || row.cenaBiletu === 0 || row.gospodarz === null || !isWynikValid(row.wynikMeczu) || row.przyjezdni === null || row.gospodarz === row.przyjezdni);
+        }
+
+        function isWynikValid(wynik) {
+            return !!wynik.match('[0-9]+[:][0-9]+');
+        }
+
+        function resetErr() {
+            $scope.boiskoErr2 = 'normal';
+            $scope.cenaBiletuErr2 = 'normal';
+            $scope.gospodarzErr2 = 'normal';
+            $scope.wynikMeczuErr2 = 'normal';
+            $scope.przyjezdniErr2 = 'normal';
+            $scope.error3 = '';
+            $scope.error2 = '';
+        }
+
         $scope.edit = function (row) {//musi
+            resetErr();
             console.log(row);
             $scope.showEdit = true;
             $scope.edited = copyOf(row);
@@ -154,8 +228,8 @@ angular.module('myApp.mecze', ['ngRoute'])
             }
 
             let id3 = 0;
-            for(let i=0;i<$scope.boiska.length;++i){
-                id3 = ($scope.boiska[i].id === $scope.edited.boisko.id) ? i: id3;
+            for (let i = 0; i < $scope.boiska.length; ++i) {
+                id3 = ($scope.boiska[i].id === $scope.edited.boisko.id) ? i : id3;
             }
 
             // $scope.edited.data = $scope.edited.data | date: "yyyy-MM-dd"; TODO
@@ -169,12 +243,20 @@ angular.module('myApp.mecze', ['ngRoute'])
             deleteF(row, Factory, reload);
         };
 
-        $scope.update = function (row) {//musi
+        $scope.update = function (row) {
             row.boisko = $scope.boiska.selected;
-            row.druzyna = $scope.druzyny.selected;
-            console.log(row);
-            updateF(row, Factory, reload);
-            $scope.showEdit = false;
-            $scope.edited = empty();
+            row.przyjezdni = $scope.druzyny.przyjezdni;
+            row.gospodarz = $scope.druzyny.gospodarz;
+
+            if (validateForm(row, 1)) {
+                $scope.error2 = '';
+                console.log(row);
+                updateF(row, Factory, reload);
+                $scope.showEdit = false;
+
+                $scope.edited = empty();
+            } else {
+                $scope.error2 = 'Niepoprawne dane';
+            }
         };
     });

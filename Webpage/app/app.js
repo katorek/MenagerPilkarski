@@ -41,28 +41,10 @@ const addF = function (entry, Factory, reload) {
         console.log(response);
         // handleError(response);
         // alert(response.toString());
+        return false;
     });
-
+    return true;
 };
-
-function handleError(response) {
-    console.log('handlEerror');
-    console.log(typeof(response));
-    alert(response);
-    // console.log(response);
-    // let array = response.split(" ");
-    // console.log('SplitArray');
-    // console.log(array);
-    // let newResp = '';
-    // if(response.contains('Duplicate')){
-    //
-    // }
-    alert(response);
-}
-
-function doNothing() {
-
-}
 
 const deleteF = function (entry, Factory, reload) {
     Factory.delete(entry, function () {
@@ -83,6 +65,10 @@ const updateF = function (entry, Factory, reload) {
         alert(r);
     });
 };
+
+function isPeselValid(pesel) {
+    return !!pesel.match('^[0-9]{11}$');
+}
 
 const copyOf = function (object) {
     return angular.copy(object);

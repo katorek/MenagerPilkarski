@@ -2,25 +2,27 @@
 <div>
     <form novalidate class="simple-form">
         <p>Dodawanie nowej druzyny</p><br/>
-        <input type="text" ng-model="entry.nazwa" placeholder="Nazwa"/><br/>
+        <input ng-class='nazwaErr' type="text" ng-model="entry.nazwa" placeholder="Nazwa" required/><br/>
 
         <label>Liga:
-            <select ng-model="entry.liga">
+            <select ng-class='ligaErr' ng-model="entry.liga">
                 <option ng-repeat="option in ligi" value="{{option.id}}">{{option.nazwa}}</option>
             </select>
         </label><br/>
-        <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+        <input type="submit" ng-click="add(entry)" value="Dodaj"/><br/>
+        <div class="errorMsg">{{error}}</div><br/>
     </form>
 </div>
 
 <!--<div ng-hide="!showEdit" ng-show="showEdit">-->
 <div ng-show="showEdit">
     <form novalidate class="simple-form">
-        <label>Nazwa: <input type="text" ng-model="edited.nazwa"></label>
+        <label>Nazwa: <input ng-class='nazwaErr2' type="text" ng-model="edited.nazwa"></label>
         <label>Liga:
-            <select ng-options="item.nazwa for item in ligi" ng-model="ligi.selected"></select>
+            <select ng-class='ligaErr2' ng-options="item.nazwa for item in ligi" ng-model="ligi.selected"></select>
         </label><br/>
         <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+        <div class="errorMsg">{{error2}}</div><br/>
     </form>
 </div>
 
