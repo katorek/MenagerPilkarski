@@ -50,7 +50,12 @@ const deleteF = function (entry, Factory, reload) {
     Factory.delete(entry, function () {
         reload();
     }, function (r) {
-        alert(r);
+        if(r.status === 412){
+            alert('Nie mozna usunąć wpisu !\nSpróbuj ponownie !');
+        }else{
+            console.log(r);
+            alert(r);
+        }
     });
 
 

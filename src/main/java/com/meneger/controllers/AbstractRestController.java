@@ -2,15 +2,12 @@ package com.meneger.controllers;
 
 import com.meneger.model.Template;
 import com.meneger.repositories.base.BaseRepository;
-import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.ResponseErrorHandler;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public abstract class AbstractRestController<T extends Template, S extends BaseRepository<T, Integer>> {
@@ -59,7 +56,13 @@ public abstract class AbstractRestController<T extends Template, S extends BaseR
         try {
             repository.delete(id);
             return ResponseEntity.ok().build();
-        } catch (Exception e) {
+        }catch (DataIntegrityViolationException e){
+            System.out.println(e.getRootCause().getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
+//            if(e.getRootCause().)
+        }
+        catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.unprocessableEntity().build();
         }

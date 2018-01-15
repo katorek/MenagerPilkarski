@@ -1,22 +1,22 @@
 CREATE TABLE orliki
 (
-  ID     INT PRIMARY KEY AUTO_INCREMENT,
-  BOISKO INT
+  ID     INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  BOISKO INTEGER
 );
 
 CREATE TABLE boiska
 (
-  ID           INT PRIMARY KEY AUTO_INCREMENT,
+  ID           INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   NAZWA        VARCHAR(50) NOT NULL UNIQUE,
-  ILOSC_MIEJSC INT         NOT NULL,
+  ILOSC_MIEJSC INTEGER     NOT NULL,
   MIEJSCOWOSC  VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE stadiony
 (
-  ID                    INT PRIMARY KEY AUTO_INCREMENT,
+  ID                    INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   CHRONI_PRZED_DESZCZEM TINYINT(1) NOT NULL,
-  BOISKO                INT
+  BOISKO                INTEGER
 );
 
 INSERT INTO boiska (NAZWA, ILOSC_MIEJSC, MIEJSCOWOSC) VALUES
@@ -26,9 +26,17 @@ INSERT INTO boiska (NAZWA, ILOSC_MIEJSC, MIEJSCOWOSC) VALUES
   ('Stadion Towarzystwa Sportowego Polonia', 100, 'Poznań');
 
 INSERT INTO stadiony (CHRONI_PRZED_DESZCZEM, BOISKO) VALUES
-  (0,(SELECT ID FROM boiska WHERE NAZWA='Stadion Miejski w Poznaniu')),
-  (1,(SELECT ID FROM boiska WHERE NAZWA='Camp Nou'));
+  (0, (SELECT ID
+       FROM boiska
+       WHERE NAZWA = 'Stadion Miejski w Poznaniu')),
+  (1, (SELECT ID
+       FROM boiska
+       WHERE NAZWA = 'Camp Nou'));
 
-INSERT INTO orliki(BOISKO) VALUES
-  ((SELECT ID FROM boiska WHERE NAZWA='Młodzieżowy Ośrodek Sportowy')),
-  ((SELECT ID FROM boiska WHERE NAZWA='Stadion Towarzystwa Sportowego Polonia'));
+INSERT INTO orliki (BOISKO) VALUES
+  ((SELECT ID
+    FROM boiska
+    WHERE NAZWA = 'Młodzieżowy Ośrodek Sportowy')),
+  ((SELECT ID
+    FROM boiska
+    WHERE NAZWA = 'Stadion Towarzystwa Sportowego Polonia'));

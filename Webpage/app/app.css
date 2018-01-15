@@ -38,10 +38,6 @@
     transition: all linear 0.5s;
     opacity:1;
 }
-/*.has-error {*/
-    /*color: red;*/
-    /*background-color: yellow;*/
-/*}*/
 .error{
     /*color:red;*/
     /*background-color: yellow;*/
@@ -49,10 +45,6 @@
 }
 .errorMsg{
     color:red;
-    /*background-color: yellow;*/
 }
 .normal{
-    /*color:white;*/
-    /*background-color: white;*/
-    /*border: 1px solid black;*/
 }

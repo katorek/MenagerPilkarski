@@ -14,6 +14,5 @@ angular.module('myApp.welcome', ['ngRoute'])
 
 function Welcome() {
     const vm = this;
-    vm.title = 'Hello World !';
-    vm.title = 'Hello World ! !';
+    vm.title = 'Witaj w menegerze piłkarskim !';
 }

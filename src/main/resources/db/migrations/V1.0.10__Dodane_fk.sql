@@ -1,0 +1,36 @@
+ALTER TABLE bilety
+  ADD CONSTRAINT bilety_mecze_ID_fk
+FOREIGN KEY (MECZ_ID) REFERENCES mecze (ID);
+ALTER TABLE bilety
+  ADD CONSTRAINT bilety_kibice_ID_fk
+FOREIGN KEY (KIBIC_ID) REFERENCES kibice (ID);
+
+ALTER TABLE druzyny
+  ADD CONSTRAINT druzyny_ligi_ID_fk
+FOREIGN KEY (LIGA_ID) REFERENCES ligi (ID);
+
+ALTER TABLE mecze
+  ADD CONSTRAINT mecze_druzyny_gospodarze_ID_fk
+FOREIGN KEY (GOSPODARZ_ID) REFERENCES druzyny (ID);
+ALTER TABLE mecze
+  ADD CONSTRAINT mecze_druzyny_przyjezdni_ID_fk
+FOREIGN KEY (PRZYJEZDNI_ID) REFERENCES druzyny (ID);
+ALTER TABLE mecze
+  ADD CONSTRAINT mecze_boiska_ID_fk
+FOREIGN KEY (BOISKO_ID) REFERENCES boiska (ID);
+
+# ALTER TABLE orliki
+#   ADD CONSTRAINT orliki_boiska_ID_fk
+# FOREIGN KEY (BOISKO) REFERENCES boiska (ID) ON DELETE CASCADE;
+
+ALTER TABLE pilkarze
+  ADD CONSTRAINT pilkarze_druzyny_ID_fk
+FOREIGN KEY (DRUZYNA_ID) REFERENCES druzyny (ID);
+
+ALTER TABLE sponsorzy
+  ADD CONSTRAINT sponsorzy_druzyny_ID_fk
+FOREIGN KEY (DRUZYNA_ID) REFERENCES druzyny (ID);
+
+# ALTER TABLE stadiony
+#   ADD CONSTRAINT stadiony_boiska_ID_fk
+# FOREIGN KEY (BOISKO) REFERENCES boiska (ID) ON DELETE CASCADE;
