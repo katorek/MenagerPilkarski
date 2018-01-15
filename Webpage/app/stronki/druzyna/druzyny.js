@@ -31,6 +31,7 @@ angular.module('myApp.druzyny', ['ngRoute'])
             },
             {
                 field:'liga.nazwa',
+                displayName: 'Liga'
             },
             editTemplate,
             delTemplate

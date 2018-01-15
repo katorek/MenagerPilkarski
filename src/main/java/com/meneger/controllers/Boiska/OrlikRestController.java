@@ -5,7 +5,6 @@ import com.meneger.model.boisko.Boisko;
 import com.meneger.model.boisko.Orlik;
 import com.meneger.repositories.BoiskoRepository;
 import com.meneger.repositories.OrlikRepository;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

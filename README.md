@@ -13,6 +13,7 @@ Frontend in separate project(propably in AngularJS)
 - Maven
 - MySQL Database
 - MySQL Workbench (optional but recommended for managing)
+- NodeJS required to run frontpage
 *******
 
 ## Setting up database
@@ -24,8 +25,13 @@ Frontend in separate project(propably in AngularJS)
 ## To Run
 1. clone from github
 2. cd $clone_dir
-3. mvn flyway:migrate
-4. mvn clean package && java -jar target/MenegerPilkarski-${version}.jar
+3. <code>mvn flyway:clean & mvn flyway:migrate</code>
+4. <code>mvn clean package && java -jar target/MenegerPilkarski-${version}.jar</code>
+*******
+
+## To Run frontpage
+1. cd Webpage
+2. npm start
 *******
 
 ### Updating local database:
